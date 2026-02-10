@@ -148,15 +148,8 @@ export default function AboutUs() {
                 <div className="about-right basis-full lg:basis-[44%] mt-14 md:mt-0">
                     <div className="about-content relative">
                         <div className="about-image relative w-full h-55 md:h-86 flex flex-col justify-center items-center group overflow-hidden rounded-[10px] md:rounded-2xl">
-                            <Image
-                                src="/images/about/aboutimage1.webp"
-                                alt="AboutUsOurTeam"
-                                fill
-                                sizes="50vw"
-                                quality={75}
-                                priority={false}
-                                className="w-full object-cover transition-transform duration-700 group-hover/img:scale-110 group-hover/img:rotate-1"
-                            />
+                            <Image src="/images/about/aboutimage1.webp" alt="AboutUsOurTeam" fill sizes="(max-width: 768px) 100vw, 44vw"
+                            quality={80} priority={true} className="w-full object-cover transition-transform duration-700 group-hover/img:scale-110 group-hover/img:rotate-1" />
                             <div
                                 className="image-overlay absolute top-0 right-0 w-full h-full"
                                 style={{
@@ -184,15 +177,8 @@ export default function AboutUs() {
                         <div className="images-box relative flex flex-wrap justify-between items-start md:items-center mt-1.5 md:mt-2.5">
                             {/* Left Image */}
                             <div className="about-image basis-[49%] h-40 md:h-60 relative group/img overflow-hidden rounded-[10px] md:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
-                                <Image
-                                    src="/images/about/aboutimage2.webp"
-                                    alt="AboutUsOurVision"
-                                    fill
-                                    sizes="50vw"
-                                    quality={75}
-                                    priority={false}
-                                    className="w-full object-cover transition-transform duration-700 group-hover/img:scale-110 group-hover/img:rotate-1"
-                                />
+                                <Image src="/images/about/aboutimage2.webp" alt="AboutUsOurVision" fill sizes="(max-width: 768px) 49vw, 22vw"
+                                 quality={75} loading="lazy" className="w-full object-cover transition-transform duration-700 group-hover/img:scale-110 group-hover/img:rotate-1" />
                                 <div
                                     className="image-overlay absolute bottom-0 left-0 w-full h-full transition-opacity duration-500 group-hover/img:opacity-80"
                                     style={{ backgroundImage: "linear-gradient(125deg, rgba(59, 188, 252, 0.600), transparent)" }}
@@ -202,15 +188,8 @@ export default function AboutUs() {
                             </div>
                             {/* Right Image */}
                             <div className="about-image basis-[49%] h-40 md:h-60 relative group/img overflow-hidden rounded-[10px] md:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
-                                <Image
-                                    src="/images/about/aboutimage3.webp"
-                                    alt="AboutUsOurVision"
-                                    fill
-                                    sizes="50vw" 
-                                    quality={75}
-                                    priority={false}
-                                    className="w-full object-cover transition-transform duration-700 group-hover/img:scale-110 group-hover/img:-rotate-1"
-                                />
+                                <Image src="/images/about/aboutimage3.webp" alt="AboutUsOwner" fill sizes="(max-width: 768px) 49vw, 22vw"
+                                 quality={75} loading="lazy" className="w-full object-cover transition-transform duration-700 group-hover/img:scale-110 group-hover/img:-rotate-1" />
                                 <div
                                     className="image-overlay absolute top-0 right-0 w-full h-full transition-opacity duration-500 group-hover/img:opacity-80"
                                     style={{ backgroundImage: "linear-gradient(-125deg, rgba(59, 188, 252, 0.600), transparent)" }}
