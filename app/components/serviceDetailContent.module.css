@@ -1,6 +1,6 @@
 .portfolioBanner {
   width: 100%;
-  height: 56vh !important;
+  height: 60vh !important;
   position: relative;
   background: linear-gradient(180deg, #000000 0%, #3bbbfc 55%, #000000);
   overflow: hidden !important;

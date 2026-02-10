@@ -3,7 +3,6 @@ import Link from "next/link";
 import { ArrowRight } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import { motion, easeOut } from 'framer-motion';
-
 const Icon = dynamic(() => import('@iconify/react').then(mod => mod.Icon), {
     loading: () => <span />,
     ssr: false
@@ -295,7 +294,6 @@ export default function OurServices() {
                                             )}
                                         </motion.div>
                                     </div>
-
                                     <div className="flex items-center gap-3">
                                         <div className="h-px w-12 opacity-50 group-hover:w-16 group-hover:opacity-100 transition-all duration-500"
                                             style={{ background: 'linear-gradient(90deg, transparent 0%, #3bbbfc 100%)' }} />
@@ -319,19 +317,12 @@ export default function OurServices() {
 
                                 <ul className="space-y-3 mb-8 grow">
                                     {service.features.map((feature, idx) => (
-                                        <motion.li
-                                            key={idx}
-                                            className="flex items-start gap-3 text-white/90 text-[12.5px] md:text-sm leading-relaxed 
-                                                transition-all duration-300 group-hover:text-gray-300 group-hover:translate-x-1"
-                                            initial={{ opacity: 0, x: -10 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            viewport={{ once: true }}
-                                            transition={{ delay: index * 0.1 + idx * 0.05 }}
-                                        >
+                                        <li key={idx} className="flex items-start gap-3 text-white/90 text-[12.5px] md:text-sm leading-relaxed 
+                                        transition-all duration-300 group-hover:text-gray-300 group-hover:translate-x-1">
                                             <div className="w-1.5 h-1.5 rounded-full mt-2 shrink-0 transition-all duration-300 group-hover:scale-125"
                                                 style={{ background: 'linear-gradient(135deg, #3bbbfc 0%, #0188fc 100%)', boxShadow: '0 0 8px rgba(59, 187, 252, 0.6)' }} />
                                             <span>{feature}</span>
-                                        </motion.li>
+                                        </li>
                                     ))}
                                 </ul>
 

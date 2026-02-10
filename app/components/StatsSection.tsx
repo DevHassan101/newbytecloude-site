@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState, useRef } from "react";
-import { useInView } from "framer-motion";
+import { useInView, motion } from "framer-motion";
 
 interface CountUpProps {
     to: string | number;
@@ -55,24 +55,72 @@ export default function StatsSection() {
         { label: "Client Ratings", value: "4.8", suffix: "" },
     ];
 
+    // Animation variants - FIXED
+    const containerVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.8,
+                staggerChildren: 0.15,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+    const statVariants = {
+        hidden: { opacity: 0, y: 30, scale: 0.9 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+                duration: 0.6,
+            }
+        }
+    };
+
     return (
         <section className="stats-section pt-4 pb-6 py-0 md:py-6 md:pb-0 px-6 md:px-28 bg-black">
-            <div className="relative flex flex-wrap lg:flex-nowrap justify-around items-center py-6 md:py-8 px-6 rounded-2xl md:rounded-3xl border border-[#3bbbfc]/50 backdrop-blur-xl shadow-2xl overflow-hidden"
-                 style={{ background: "linear-gradient(135deg, rgba(59, 187, 252, 0.300) 0%, rgba(1, 168, 252, 0.300) 100%)", 
-                       boxShadow: "0 15px 40px -10px rgba(1, 168, 252, 0.25)"}}>
+            <motion.div 
+                className="relative flex flex-wrap lg:flex-nowrap justify-around items-center py-6 md:py-8 px-6 rounded-2xl md:rounded-3xl border border-[#3bbbfc]/50 backdrop-blur-xl shadow-2xl overflow-hidden"
+                style={{ 
+                    background: "linear-gradient(135deg, rgba(59, 187, 252, 0.300) 0%, rgba(1, 168, 252, 0.300) 100%)", 
+                    boxShadow: "0 15px 40px -10px rgba(1, 168, 252, 0.25)"
+                }}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+                variants={containerVariants}
+            >
 
                 <div className="absolute top-0 left-0 w-full h-full bg-linear-to-r from-[#01a8fc]/10 via-transparent to-[#3bbbfc]/10 pointer-events-none" />
                 <div className="absolute -top-24 -left-24 w-64 h-64 bg-[#01a8fc]/25 rounded-full blur-[80px]" />
                 <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-[#01a8fc]/25 rounded-full blur-[80px]" />
 
                 {stats.map((stat, index) => (
-                    <div key={index} className="relative flex flex-col items-center px-8 py-4 md:py-6 group">
-                        <h2 className="text-[35px] md:text-5xl text-white font-bold drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] group-hover:scale-110 transition-transform duration-500">
+                    <motion.div 
+                        key={index} 
+                        className="relative flex flex-col items-center px-8 py-4 md:py-6 group"
+                        variants={statVariants}
+                        whileHover={{ 
+                            scale: 1.05,
+                            transition: { duration: 0.3 }
+                        }}
+                    >
+                        <h2 className="text-[35px] md:text-5xl text-white font-bold drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] transition-all duration-500 ease-out">
                             <CountUp to={stat.value} />
                             <span className="text-[#3bbbfc]">{stat.suffix}</span>
                         </h2>
                         <div className="flex items-center gap-2 mt-2 md:mt-3">
-                            <span className="w-1.5 h-1.5 bg-[#3bbbfc] rounded-full" />
+                            <motion.span 
+                                className="w-1.5 h-1.5 bg-[#3bbbfc] rounded-full"
+                                initial={{ scale: 0 }}
+                                whileInView={{ scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.15 + 0.5, type: "spring", stiffness: 200 }}
+                            />
                             <p className="text-[10px] md:text-[12px] text-white/70 font-bold uppercase tracking-[0.2em] text-center">
                                 {stat.label}
                             </p>
@@ -80,9 +128,9 @@ export default function StatsSection() {
                         {index !== stats.length - 1 && (
                             <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-0.5 h-14 bg-linear-to-b from-transparent via-white/40 to-transparent" />
                         )}
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </section>
     );
-};
+}
