@@ -157,7 +157,7 @@ export default function HeroBanner() {
                                     </motion.div>
                                     {/* Description */}
                                     <motion.div className="hero-desc mt-3 md:mt-5 max-w-3xl mx-auto px-4 md:px-8 text-center" variants={itemVariants}>
-                                        <p className="pb-3 text-[13px] sm:text-sm md:text-base lg:text-lg text-white/90 leading-relaxed">
+                                        <p className="pb-2 text-[13px] sm:text-sm md:text-base lg:text-lg text-white/90 leading-relaxed">
                                             {slide.description}
                                         </p>
                                         <p className="pb-2 text-[13px] sm:text-sm md:text-base lg:text-lg text-white/90 leading-relaxed">
@@ -165,9 +165,9 @@ export default function HeroBanner() {
                                         </p>
                                     </motion.div>
                                     {/* CTA Buttons */}
-                                    <motion.div className="hero-btns mt-5 mb-5 flex flex-row gap-3 md:gap-2 justify-center items-center" variants={itemVariants}>
+                                    <motion.div className="hero-btns mt-5 mb-4 flex flex-row gap-3 justify-center items-center" variants={itemVariants}>
                                         <motion.button 
-                                            className="py-2.5 px-7 md:py-4 md:px-12 btn1 dark-btn text-[11px] md:text-sm uppercase rounded-full"
+                                            className="py-2.5 px-7 md:py-3.75 md:px-11 btn1 dark-btn text-[11px] md:text-sm uppercase rounded-full"
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                             tabIndex={currentSlide === index ? 0 : -1}
@@ -176,7 +176,7 @@ export default function HeroBanner() {
                                             {slide.primaryBtn}
                                         </motion.button>
                                         <motion.button 
-                                            className="py-2.5 px-7 md:py-4 md:px-12 btn2 light-btn text-[11px] md:text-sm uppercase rounded-full"
+                                            className="py-2.5 px-7 md:py-3.75 md:px-11 btn2 light-btn text-[11px] md:text-sm uppercase rounded-full"
                                             whileHover={{ scale: 1.05 }}
                                             whileTap={{ scale: 0.95 }}
                                             tabIndex={currentSlide === index ? 0 : -1}
