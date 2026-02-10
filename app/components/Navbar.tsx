@@ -73,12 +73,22 @@ export default function Navbar() {
     const isHome = pathname === "/";
 
     useEffect(() => {
+        let ticking = false;
+
         const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    setScrolled(window.scrollY > 20);
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
-        window.addEventListener("scroll", handleScroll);
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
 
     useEffect(() => {
         if (open) {
@@ -91,7 +101,7 @@ export default function Navbar() {
         };
     }, [open]);
 
-    const maskUrl = `"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'><path d='M0,0 C50,0 50,100 100,100 H900 C950,100 950,0 1000,0 Z' fill='black'/></svg>"`;
+    // const maskUrl = `"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'><path d='M0,0 C50,0 50,100 100,100 H900 C950,100 950,0 1000,0 Z' fill='black'/></svg>"`;
 
     return (
         <>
@@ -102,10 +112,7 @@ export default function Navbar() {
                         <span className='text-white'>.</span>
                     </Link>
                     <div className={`hidden lg:flex items-center justify-center relative h-17 self-start transition-all duration-700 ease-in-out ${scrolled ? "bg-transparent" : ""}`}>
-                        <div className={`absolute inset-0 bg-white transition-opacity duration-700 ease-in-out ${scrolled ? "invisible" : "visible"}`} style={{
-                            WebkitMaskImage: `url(${maskUrl})`, maskImage: `url(${maskUrl})`,
-                            maskSize: '100% 100%', WebkitMaskSize: '100% 100%'
-                        }} />
+                        <div className={`absolute inset-0 bg-white transition-opacity duration-700 ease-in-out ${styles.maskShape} ${scrolled ? "invisible" : "visible"}`} />
                         <ul className="relative flex items-center gap-8 xl:gap-12 px-20 h-full z-10">
                             {menu.map((item) => (
                                 <li key={item.name} className="relative group flex items-center h-full">
@@ -113,7 +120,7 @@ export default function Navbar() {
                                         <Link
                                             href={item.path}
                                             className={`text-[15px] tracking-wider font-medium transition-all duration-700 ease-in-out uppercase ${scrolled ? "text-white hover:text-[#49bdf7]" : "hover:text-blue-600"}`}
-                                            style={!scrolled ? { color: "#0066cc" } : {}} 
+                                            style={!scrolled ? { color: "#0066cc" } : {}}
                                             aria-label={item.ariaLabel}
                                         >
                                             {item.name}

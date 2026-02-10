@@ -115,6 +115,7 @@
 .hero-banner {
   width: 100%;
   height: 120vh;
+  contain: layout paint;
   position: relative;
   background: linear-gradient(180deg, #000000 0%, #3bbbfc 55%, #000000);
   overflow: hidden !important;
@@ -153,6 +154,8 @@
   justify-content: space-between;
   align-items: center;
   margin: auto !important;
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 @media only screen and (max-width: 992px) {
