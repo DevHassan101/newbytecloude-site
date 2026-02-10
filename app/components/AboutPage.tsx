@@ -4,6 +4,7 @@ import { motion, useMotionValue, useTransform, animate, AnimatePresence } from "
 import { useEffect, useState } from "react";
 import { Icon } from '@iconify/react';
 import StatsSection from "./StatsSection";
+import styles from "../about/about.module.css"
 
 export default function AboutSection() {
     const texts = ["Our Expertise", "Our Passion", "Our Vision"];
@@ -33,8 +34,8 @@ export default function AboutSection() {
 
     return (
         <>
-            <section className="about-banner py-28 px-12 md:px-0">
-                <div className="about-overlay-banner">
+            <section className={`${styles.aboutBanner} py-28 px-12 md:px-0`}>
+                <div className={styles.aboutOverlayBanner}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice"
                         style={{ width: '100%', height: '100%', opacity: 0.3 }}>
                         <defs>
@@ -60,7 +61,7 @@ export default function AboutSection() {
                     <p className="text-sm md:text-lg text-white/80">We craft innovation digital solution that drive growth and deliver results for your business.</p>
                 </div>
             </section>
-            <section className="main-about-section relative pt-18 md:pt-34 pb-22 px-6 md:px-28 overflow-hidden">
+            <section className="main-about-section bg-black relative pt-18 md:pt-34 pb-22 px-6 md:px-28 overflow-hidden">
                 {/* light1:center-glow */}
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-[#3bbbfc] opacity-15 blur-[120px] rounded-full"></div>
                 {/* light2:top-corner-glow */}

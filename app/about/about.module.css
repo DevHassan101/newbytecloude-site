@@ -1,0 +1,33 @@
+.aboutBanner {
+  width: 100%;
+  height: 56vh !important;
+  position: relative;
+  background: linear-gradient(180deg, #000000 0%, #3bbbfc 55%, #000000);
+  overflow: hidden !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.aboutOverlayBanner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 85%;
+  margin: auto;
+  height: 100%;
+  pointer-events: none;
+}
+
+@media only screen and (max-width: 992px) {
+  .aboutBanner {
+    width: 100% !important;
+    height: 42vh !important;
+  }
+  .aboutOverlayBanner {
+    width: 100% !important;
+    height: 100% !important;
+  }
+}

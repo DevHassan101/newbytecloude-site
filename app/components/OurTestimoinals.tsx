@@ -56,7 +56,7 @@ const testimonials: Testimonial[] = [
 export default function OurTestimonials() {
     return (
         <>
-            <section className="our-testimonials-section relative pt-14 pb-20 md:pt-25 md:pb-80 px-6 md:px-26 overflow-hidden">
+            <section className="our-testimonials-section bg-black relative pt-14 pb-20 md:pt-25 md:pb-80 px-6 md:px-26 overflow-hidden">
                 {/* light1:top-right-glow */}
                 <div className="absolute top-10 -right-20 w-125 h-125 bg-[#3bbbfc] opacity-15 blur-[120px] rounded-full"></div>
                 {/* light2:bottom-left-glow */}

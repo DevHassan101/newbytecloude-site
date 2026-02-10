@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { ArrowUpRight } from 'lucide-react';
 import Link from "next/link";
+import styles from './ourPortfolio.module.css';
 
 
 const projects = [
@@ -56,7 +57,7 @@ export default function OurPortfolio() {
   };
 
   return (
-    <section className="main-portfolio-section relative pt-14 pb-0 md:py-24 px-6 md:px-28 overflow-hidden">
+    <section className="main-portfolio-section bg-black relative pt-14 pb-0 md:py-24 px-6 md:px-28 overflow-hidden">
       {/* light1:top-right-glow */}
       <div className="absolute top-12 -right-24 w-125 h-125 bg-[#3bbbfc] opacity-10 blur-[120px] rounded-full"></div>
       {/* light2:bottom-left-glow */}
@@ -85,7 +86,7 @@ export default function OurPortfolio() {
 
         {/* porfolio-cards-start */}
         <div className="portfolio-content mt-16">
-          <div className="flex flex-row overflow-x-auto justify-start md:justify-center items-center gap-4 md:gap-6 p-3 scroll-smooth w-[96%] mx-auto md:w-full custom-scrollbar">
+          <div className={`flex flex-row overflow-x-auto justify-start md:justify-center items-center gap-4 md:gap-6 p-3 scroll-smooth w-[96%] mx-auto md:w-full ${styles.customScrollbar}`}>
             {categories.map((category_name) => (
               <button key={category_name} onClick={() => setActiveFilter(category_name)}
                 className={`relative shrink-0 px-7 py-2.25 md:px-8 md:py-3 rounded-full border transition-all duration-500 cursor-pointer text-xs md:text-sm font-bold md:font-semibold tracking-wide md:tracking-wider uppercase overflow-hidden

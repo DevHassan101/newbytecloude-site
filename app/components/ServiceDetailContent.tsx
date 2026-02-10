@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+// import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { ServiceDetail } from '@/data/servicesDetails';
+import styles from './serviceDetailContent.module.css';
 // @ts-ignore
 import 'swiper/css';
 // @ts-ignore
@@ -34,8 +35,8 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
 
     return (
         <div className="services-detail-section min-h-screen">
-            <section className="portfolio-banner py-28 px-12 md:px-0">
-                <div className="portfolio-overlay-banner">
+            <section className={`${styles.portfolioBanner} py-28 px-12 md:px-0`}>
+                <div className={styles.portfolioOverlayBanner}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice"
                         style={{ width: '100%', height: '100%', opacity: 0.3 }}>
                         <defs>
@@ -306,13 +307,13 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
                             </div>
                             <div className="relative z-10 mb-3">
                                 <div className="w-full flex justify-end items-center mb-4 md:mb-5 gap-3 md:gap-3.5">
-                                    <button className="swiper-button-prev-custom group relative flex justify-center items-center w-10 h-10 md:w-11 md:h-11 rounded-full border border-white/60 overflow-hidden transition-all duration-500 shadow-[0_4px_14px_rgba(59,187,252,0.3)] cursor-pointer"
+                                    <button className="swiperButtonPrevCustom group relative flex justify-center items-center w-10 h-10 md:w-11 md:h-11 rounded-full border border-white/60 overflow-hidden transition-all duration-500 shadow-[0_4px_14px_rgba(59,187,252,0.3)] cursor-pointer"
                                         style={{ background: `linear-gradient(145deg, #3bbbfc 0%, #0188fc 100%)` }}>
                                         <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                         <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-linear-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-[shine_1.5s_ease-in-out_infinite]" />
                                         <ChevronLeft className="text-white relative z-10 group-hover:scale-110 transition-transform duration-300 w-5 h-5 md:w-6 md:h-6" />
                                     </button>
-                                    <button className="swiper-button-next-custom group relative flex justify-center items-center w-10 h-10 md:w-11 md:h-11 rounded-full border border-white/60 overflow-hidden transition-all duration-500 shadow-[0_4px_14px_rgba(59,187,252,0.3)] cursor-pointer"
+                                    <button className="swiperButtonNextCustom group relative flex justify-center items-center w-10 h-10 md:w-11 md:h-11 rounded-full border border-white/60 overflow-hidden transition-all duration-500 shadow-[0_4px_14px_rgba(59,187,252,0.3)] cursor-pointer"
                                         style={{ background: `linear-gradient(145deg, #3bbbfc 0%, #0188fc 100%)` }}>
                                         <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                         <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-linear-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 group-hover:animate-[shine_1.5s_ease-in-out_infinite]" />
@@ -327,8 +328,8 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
                                     loop={service.projects.length > 3} // Only enable loop if more than 3 projects
                                     speed={500}
                                     navigation={{
-                                        nextEl: '.swiper-button-next-custom',
-                                        prevEl: '.swiper-button-prev-custom',
+                                        nextEl: '.swiperButtonNextCustom',
+                                        prevEl: '.swiperButtonPrevCustom',
                                     }}
                                     autoplay={{
                                         delay: 3000,
@@ -345,7 +346,7 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
                                             spaceBetween: 18,
                                         },
                                     }}
-                                    className="projects-swiper"
+                                    className="projectsSwiper"
                                 >
                                     {service.projects.map((project, index) => (
                                         <SwiperSlide key={index}>

@@ -1,11 +1,11 @@
 import { Icon } from "@iconify/react";
+import styles from './contact.module.css';
 
 export default function ContactUs() {
     return (
         <>
-
-            <section className="contact-banner py-28 px-12 md:px-0">
-                <div className="contact-overlay-banner">
+            <section className={`${styles.contactBanner} py-28 px-12 md:px-0`}>
+                <div className={styles.contactOverlayBanner}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice"
                         style={{ width: '100%', height: '100%', opacity: 0.3 }}>
                         <defs>

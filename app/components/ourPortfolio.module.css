@@ -1,0 +1,23 @@
+.customScrollbar::-webkit-scrollbar {
+  height: 3.5px;
+  display: block;
+}
+
+.customScrollbar::-webkit-scrollbar-track {
+  background: rgb(255 255 255 / 0.05);
+  border-radius: 20px;
+  margin-inline: 10px;
+}
+
+.customScrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(to right, #3bbcfcc0, #01a8fcdc);
+  border-radius: 20px;
+  border: 1px solid rgb(255 255 255 / 0.1);
+}
+
+@media (max-width: 768px) {
+  .customScrollbar {
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 28px;
+  }
+}

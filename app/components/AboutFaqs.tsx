@@ -1,6 +1,6 @@
 'use client';
 
-import Image from "next/image";
+// import Image from "next/image";
 import { Icon } from '@iconify/react';
 import { useState } from "react";
 
@@ -47,7 +47,7 @@ export default function AboutFaqs() {
 
     return (
         <>
-            <section className="main-faqs-section relative pt-14 pb-20 md:pt-25 md:pb-80 px-6 md:px-28 overflow-hidden">
+            <section className="main-faqs-section bg-black relative pt-14 pb-20 md:pt-25 md:pb-80 px-6 md:px-28 overflow-hidden">
                 {/* faqs-header-start */}
                 <div className="faqs-header text-center relative">
                     <div className="inline-flex items-center gap-3 text-xs md:text-sm text-white uppercase tracking-widest">

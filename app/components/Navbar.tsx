@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { usePathname } from "next/navigation";
 import { ChevronDown, MoveUpRight, X, Menu } from 'lucide-react';
+import styles from './navbar.module.css';
 
 const menu = [
     {
@@ -91,7 +92,6 @@ export default function Navbar() {
         };
     }, [open]);
 
-    // This is the SVG path for the "S" curves on both sides
     const maskUrl = `"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'><path d='M0,0 C50,0 50,100 100,100 H900 C950,100 950,0 1000,0 Z' fill='black'/></svg>"`;
 
     return (
@@ -161,16 +161,16 @@ export default function Navbar() {
                         </ul>
                     </div>
                     <div className={`hidden lg:flex items-center gap-1 z-50 cursor-pointer ${scrolled ? "mt-0" : "mt-2"}`}>
-                        <Link href="/contact" className="dark-btn py-2.5 px-8 border border-white rounded-full text-md font-medium tracking-wide text-white transition-all duration-300 ease-in-out"
+                        <Link href="/contact" className={`${styles.darkBtn} py-2.5 px-8 border border-white rounded-full text-md font-medium tracking-wide text-white transition-all duration-300 ease-in-out`}
                             style={{ boxShadow: "0 2px 4px rgba(59, 188, 252, 0.550), inset 0 1px 0 rgba(255, 255, 255, 0.2)" }}>
                             Get In Touch
                         </Link>
-                        <span className="w-12 h-12 dark-btn border border-white rounded-full flex justify-center items-center transition-all duration-300 ease-in-out"
+                        <span className={`w-12 h-12 ${styles.darkBtn} border border-white rounded-full flex justify-center items-center transition-all duration-300 ease-in-out`}
                             style={{ boxShadow: "0 2px 4px rgba(59, 188, 252, 0.550), inset 0 1px 0 rgba(255, 255, 255, 0.2)" }}>
                             <MoveUpRight size={18} color="white" />
                         </span>
                     </div>
-                    <button aria-label="Toggle navigation menu" onClick={() => setOpen(!open)} className={`navigation-menu lg:hidden z-50 ${scrolled ? "mt-0" : "mt-5"}`}>
+                    <button aria-label="Toggle navigation menu" onClick={() => setOpen(!open)} className={`${styles.navigationMenu} lg:hidden z-50 ${scrolled ? "mt-0" : "mt-5"}`}>
                         {open ? <X size={25} className="text-white" /> : <Menu size={25} className="text-white" />}
                     </button>
                 </nav>
@@ -216,7 +216,7 @@ export default function Navbar() {
                         ))}
                     </ul>
                     <div className="p-6 flex items-center gap-2 border-t border-[#3bbbfc]/40">
-                        <Link href="/contact" className="dark-btn flex justify-between items-center w-[86%] mx-auto py-2.5 px-8 border border-white rounded-full text-[17px] font-medium tracking-wide text-white transition-all duration-300 ease-in-out"
+                        <Link href="/contact" className={`${styles.darkBtn} flex justify-between items-center w-[86%] mx-auto py-2.5 px-8 border border-white rounded-full text-[17px] font-medium tracking-wide text-white transition-all duration-300 ease-in-out`}
                             style={{ boxShadow: "0 2px 4px rgba(59, 188, 252, 0.550), inset 0 1px 0 rgba(255, 255, 255, 0.2)" }}>
                             Get In Touch
                             <MoveUpRight size={22} className='rotate-45' color="white" />

@@ -1,11 +1,11 @@
 import OurPortfolio from "../components/OurPortfolio";
-
+import styles from "./portfolio.module.css"
 
 export default function PortfolioPage() {
     return (
         <>
-            <section className="portfolio-banner py-28 px-12 md:px-0">
-                <div className="portfolio-overlay-banner">
+            <section className={`${styles.portfolioBanner} py-28 px-12 md:px-0`}>
+                <div className={styles.portfolioOverlayBanner}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice"
                         style={{ width: '100%', height: '100%', opacity: 0.3 }}>
                         <defs>

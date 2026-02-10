@@ -3,8 +3,6 @@ import { Outfit } from 'next/font/google';
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import "./globals.css";
-import "./style.css";
-
 
 const outfit = Outfit({
   subsets: ['latin'],

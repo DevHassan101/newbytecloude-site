@@ -14,6 +14,8 @@ import "swiper/css";
 import "swiper/css/pagination";
 // @ts-ignore
 import "swiper/css/navigation";
+import styles from "../portfolio.module.css"
+
 
 interface ProjectPageProps {
     params: Promise<{
@@ -35,8 +37,8 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
 
     return (
         <div className="min-h-screen bg-black">
-            <section className="portfolio-banner py-28 px-12 md:px-0">
-                <div className="portfolio-overlay-banner">
+            <section className={`${styles.portfolioBanner} py-28 px-12 md:px-0`}>
+                <div className={styles.portfolioOverlayBanner}>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice"
                         style={{ width: '100%', height: '100%', opacity: 0.3 }}>
                         <defs>

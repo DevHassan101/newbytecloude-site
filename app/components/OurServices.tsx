@@ -133,7 +133,7 @@ export default function OurServices() {
     ];
 
     return (
-        <section className="main-services-section relative py-16 md:py-20 px-6 md:px-26 overflow-hidden">
+        <section className="main-services-section bg-black relative py-16 md:py-20 px-6 md:px-26 overflow-hidden">
 
             {/* light1:top-right-glow */}
             <div className="absolute top-12 -right-24 w-100 h-100 bg-[#3bbbfc] opacity-10 blur-[120px] rounded-full"></div>
