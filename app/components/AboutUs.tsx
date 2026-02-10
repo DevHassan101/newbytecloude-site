@@ -3,7 +3,11 @@
 import Image from "next/image";
 import { motion, useMotionValue, useTransform, animate, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Icon } from '@iconify/react';
+import dynamic from 'next/dynamic';
+const Icon = dynamic(() => import('@iconify/react').then(mod => mod.Icon), {
+    loading: () => <span />,
+    ssr: false
+});
 
 
 export default function AboutUs() {

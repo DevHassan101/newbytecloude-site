@@ -1,8 +1,13 @@
 'use client'
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from 'lucide-react';
-import { Icon } from "@iconify/react";
+import dynamic from 'next/dynamic';
+const Icon = dynamic(() => import('@iconify/react').then(mod => mod.Icon), {
+    loading: () => <span />,
+    ssr: false
+});
+
 
 export default function OurServices() {
 
@@ -58,7 +63,7 @@ export default function OurServices() {
                     className={className}
                 >
                     <path fill="currentColor" stroke="currentColor" strokeWidth="0.5"
-                        d="M7 21V3zm5.039-14.692q.328 0 .548-.22t.22-.55t-.22-.549t-.549-.22t-.549.22t-.22.55t.22.548t.55.22M7.615 22q-.672 0-1.144-.472T6 20.385V3.615q0-.69.463-1.152T7.616 2h8.846q.67 0 1.143.472q.472.472.472 1.144V6.83q.373.04.648.31q.275.269.275.648v1.769q0 .379-.275.648t-.648.31v2.118q0 .214-.143.357t-.357.143t-.357-.143t-.143-.357V3.616q0-.27-.173-.443T16.462 3H7.616q-.27 0-.443.173T7 3.616v16.769q0 .269.173.442t.443.173h1.961q.214 0 .357.143t.143.357t-.143.357t-.357.143zm6.248-3.5l1.84 1.84q.14.14.14.342t-.14.347q-.146.165-.357.155q-.21-.009-.356-.155l-1.964-1.964q-.242-.242-.242-.565t.242-.565l1.97-1.97q.145-.146.353-.153t.354.16q.14.145.134.353t-.153.354zm6.734 0l-1.84-1.84q-.14-.14-.14-.342t.14-.347q.146-.165.357-.155q.21.009.356.155l1.964 1.964q.242.242.242.565t-.242.566l-1.97 1.969q-.146.146-.353.153t-.354-.16q-.14-.145-.134-.353t.153-.354z"/>
+                        d="M7 21V3zm5.039-14.692q.328 0 .548-.22t.22-.55t-.22-.549t-.549-.22t-.549.22t-.22.55t.22.548t.55.22M7.615 22q-.672 0-1.144-.472T6 20.385V3.615q0-.69.463-1.152T7.616 2h8.846q.67 0 1.143.472q.472.472.472 1.144V6.83q.373.04.648.31q.275.269.275.648v1.769q0 .379-.275.648t-.648.31v2.118q0 .214-.143.357t-.357.143t-.357-.143t-.143-.357V3.616q0-.27-.173-.443T16.462 3H7.616q-.27 0-.443.173T7 3.616v16.769q0 .269.173.442t.443.173h1.961q.214 0 .357.143t.143.357t-.143.357t-.357.143zm6.248-3.5l1.84 1.84q.14.14.14.342t-.14.347q-.146.165-.357.155q-.21-.009-.356-.155l-1.964-1.964q-.242-.242-.242-.565t.242-.565l1.97-1.97q.145-.146.353-.153t.354.16q.14.145.134.353t-.153.354zm6.734 0l-1.84-1.84q-.14-.14-.14-.342t.14-.347q.146-.165.357-.155q.21.009.356.155l1.964 1.964q.242.242.242.565t-.242.566l-1.97 1.969q-.146.146-.353.153t-.354-.16q-.14-.145-.134-.353t.153-.354z" />
                 </svg>
             ),
             number: "03",
@@ -75,8 +80,8 @@ export default function OurServices() {
         {
             iconName: ({ className }) => (
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className={className}>
-                    <path fill="currentColor" stroke="currentColor" strokeWidth="0.4"  
-                    d="M8 3a7 7 0 0 0 0 14h1.07a7 7 0 0 1 0-2H8A5 5 0 0 1 8 5h8a5 5 0 0 1 4.9 6a7 7 0 0 1 1.426 2A7 7 0 0 0 16 3zm8 10a3 3 0 1 0 0 6a3 3 0 0 0 0-6m-5 3a5 5 0 1 1 9.172 2.757l2.535 2.536l-1.414 1.414l-2.536-2.535A5 5 0 0 1 11 16" />
+                    <path fill="currentColor" stroke="currentColor" strokeWidth="0.4"
+                        d="M8 3a7 7 0 0 0 0 14h1.07a7 7 0 0 1 0-2H8A5 5 0 0 1 8 5h8a5 5 0 0 1 4.9 6a7 7 0 0 1 1.426 2A7 7 0 0 0 16 3zm8 10a3 3 0 1 0 0 6a3 3 0 0 0 0-6m-5 3a5 5 0 1 1 9.172 2.757l2.535 2.536l-1.414 1.414l-2.536-2.535A5 5 0 0 1 11 16" />
                 </svg>
             ),
             number: "04",
@@ -116,7 +121,7 @@ export default function OurServices() {
             iconName: ({ className }) => (
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className={className}>
                     <path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.8"
-                    d="M39 14a5 5 0 1 0 0-10a5 5 0 0 0 0 10M9 44a5 5 0 1 0 0-10a5 5 0 0 0 0 10m5-40H4v10h10zm30 30H34v10h10zM34 9H14m20 30H14m-5-5V14m30 20V14"/>
+                        d="M39 14a5 5 0 1 0 0-10a5 5 0 0 0 0 10M9 44a5 5 0 1 0 0-10a5 5 0 0 0 0 10m5-40H4v10h10zm30 30H34v10h10zM34 9H14m20 30H14m-5-5V14m30 20V14" />
                 </svg>
             ),
             number: "06",
@@ -223,15 +228,15 @@ export default function OurServices() {
                                     ))}
                                 </ul>
 
-                                <Link href={`/services/${service.slug}`}>
+                                <Link href={`/services/${service.slug}`} aria-label={`Learn more about ${service.title || service.number}`} className="block">
                                     <div className="mt-auto pt-4 flex items-center justify-between group-hover:gap-2 transition-all duration-300">
-                                        <button className="group/btn flex items-center gap-2 text-[#ffffff] font-semibold text-sm md:text-[16px] tracking-wider transition-all duration-500 hover:gap-3">
+                                        <div className="group/btn flex items-center gap-2 text-[#ffffff] font-semibold text-sm md:text-[16px] tracking-wider transition-all duration-500 hover:gap-3">
                                             <span>Read More</span>
                                             <div className="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center transition-all duration-500 group-hover/btn:rotate-45"
                                                 style={{ background: 'linear-gradient(135deg, #3bbbfc 0%, #0188fc 100%)', boxShadow: '0 1px 4px rgba(59, 187, 252, 0.4)' }}>
-                                                <ArrowRight size={14} className="text-white" strokeWidth={3} />
+                                                <ArrowRight size={14} className="text-white" strokeWidth={3} aria-hidden="true" />
                                             </div>
-                                        </button>
+                                        </div>
                                     </div>
                                 </Link>
                             </div>

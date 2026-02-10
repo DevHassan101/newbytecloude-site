@@ -272,18 +272,3 @@
 .content-icons .content-right span:nth-child(3) {
   animation-delay: 2.5s;
 }
-
-/* .projects-swiper .swiper-slide {
-  height: auto;
-  display: flex;
-}
-
-.projects-swiper {
-  padding-bottom: 2rem !important;
-}
-
-.swiper-button-prev-custom,
-.swiper-button-next-custom {
-  position: relative !important;
-  margin: 0 !important;
-} */

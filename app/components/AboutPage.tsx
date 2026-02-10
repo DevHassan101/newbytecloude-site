@@ -2,9 +2,14 @@
 import Image from "next/image";
 import { motion, useMotionValue, useTransform, animate, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Icon } from '@iconify/react';
 import StatsSection from "./StatsSection";
 import styles from "../about/about.module.css"
+import dynamic from 'next/dynamic';
+const Icon = dynamic(() => import('@iconify/react').then(mod => mod.Icon), {
+    loading: () => <span />,
+    ssr: false
+});
+
 
 export default function AboutSection() {
     const texts = ["Our Expertise", "Our Passion", "Our Vision"];

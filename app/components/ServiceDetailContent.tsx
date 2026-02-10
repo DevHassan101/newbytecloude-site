@@ -3,7 +3,6 @@
 // import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Icon } from '@iconify/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -15,6 +14,11 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 // @ts-ignore
 import 'swiper/css/pagination';
+import dynamic from 'next/dynamic';
+const Icon = dynamic(() => import('@iconify/react').then(mod => mod.Icon), {
+    loading: () => <span />,
+    ssr: false
+});
 
 interface ServiceDetailContentProps {
     service: ServiceDetail;

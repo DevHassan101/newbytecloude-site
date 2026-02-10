@@ -19,7 +19,6 @@ const menu = [
     },
     {
         name: 'Services',
-        path: '/services',
         ariaLabel: 'View our services',
         dropdown: [
             {
