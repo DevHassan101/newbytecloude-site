@@ -76,10 +76,10 @@ export default function AboutFaqs() {
                 <div className="faqs-section mt-12 md:mt-14">
                     <div className="faqs-box flex flex-wrap justify-between items-start">
 
-                        <div className="faqs-left-box basis-full lg:basis-[36%] relative overflow-hidden bg-linear-to-br from-[#0a0a0a] via-[#000000] to-[#0a0a0a] border md:border-2 border-[#3bbbfc] px-8 md:px-10 py-18 md:py-24 rounded-2xl md:rounded-4xl 
+                        <div className="faqs-left-box basis-full lg:basis-[36%] relative overflow-hidden bg-linear-to-br from-[#0a0a0a] via-[#000000] to-[#0a0a0a] border md:border-2 border-[#3bbbfc] px-8 md:px-10 py-18 md:py-24 rounded-2xl md:rounded-[26px] 
                         shadow-[0_7px_20px_rgba(59,187,252,0.300)] transition-all duration-500 hover:border-[#3bbbfc]/60 hover:shadow-[0_0_80px_rgba(59,187,252,0.25)] group">
 
-                            <div className="absolute -top-20 -right-20 w-40 h-50 bg-[#3bbbfc]/50 rounded-full blur-[80px] group-hover:bg-[#3bbbfc]/55 transition-all duration-700" />
+                            <div className="absolute -top-20 -right-5 w-40 h-50 bg-[#3bbbfc]/50 rounded-full blur-[80px] group-hover:bg-[#3bbbfc]/55 transition-all duration-700" />
 
                             <div className="absolute inset-0 opacity-25" style={{
                                 backgroundImage: 'linear-gradient(rgba(59,187,252,0.10) 1px, transparent 1px), linear-gradient(90deg, rgba(59,187,252,0.10) 1px, transparent 1px)',
@@ -102,11 +102,48 @@ export default function AboutFaqs() {
                                 </div>
 
                                 <div className="faqs-btn mt-4 md:mt-8 flex justify-start items-center">
-                                    <button className="group/btn relative flex items-center gap-3 bg-linear-to-br from-[#3bbbfc] to-[#01a8fc] p-1 pr-5 md:pr-10 rounded-full transition-all duration-500 shadow-[0_12px_20px_rgba(1,168,252,0.3)] hover:shadow-[0_0_30px_rgba(59,187,252,0.6),0_0_60px_rgba(59,187,252,0.3)] active:scale-95 hover:bg-position-[100%_0] animate-gradient-slow">
-                                        <div className="bg-white w-8.75 h-8.75 md:w-12 md:h-12 rounded-full flex justify-center items-center transition-all duration-300 group-hover/btn:-rotate-45 group-hover/btn:scale-110 shadow-sm">
-                                            <Icon icon="si:arrow-right-duotone" className="w-5.5 h-5.5 md:w-7.5 md:h-7.5 text-[#01a8fc]" />
+                                      <button className="group/btn relative inline-flex items-center gap-4 bg-linear-to-br from-[#3bbbfc] to-[#01a8fc] pl-1.5 pr-8 md:pr-10 py-1.5 rounded-full transition-all duration-700 shadow-[0_10px_20px_rgba(1,168,252,0.3)] hover:shadow-[0_0_12px_rgba(1,168,252,0.3),0_0_12px_rgba(1,168,252,0.3)] cursor-pointer active:scale-95 overflow-hidden">
+
+                                        {/* Animated expanding circle background */}
+                                        <span className="absolute top-1/2 left-8 md:left-10 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white/20 rounded-full opacity-0 transition-all duration-700 ease-out group-hover/btn:w-125 group-hover/btn:h-125 group-hover/btn:opacity-100"></span>
+
+                                        {/* Gradient overlay */}
+                                        <div className="absolute inset-0 bg-linear-to-br from-[#01a8fc] to-[#0d7ac2] opacity-0 transition-opacity duration-700 group-hover/btn:opacity-100 rounded-full"></div>
+
+                                        {/* Decorative waves - left */}
+                                        <span className="absolute bottom-0 left-0 h-full w-16 opacity-10">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-stretch" viewBox="0 0 487 487">
+                                                <path fillRule="nonzero" fill="#FFF" d="M0 .3c67 2.1 134.1 4.3 186.3 37 52.2 32.7 89.6 95.8 112.8 150.6 23.2 54.8 32.3 101.4 61.2 149.9 28.9 48.4 77.7 98.8 126.4 149.2H0V.3z"></path>
+                                            </svg>
+                                        </span>
+
+                                        {/* Decorative waves - right */}
+                                        <span className="absolute top-0 right-0 h-full w-16 opacity-10">
+                                            <svg xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-cover" viewBox="0 0 487 487">
+                                                <path fillRule="nonzero" fill="#FFF" d="M487 486.7c-66.1-3.6-132.3-7.3-186.3-37s-95.9-85.3-126.2-137.2c-30.4-51.8-49.3-99.9-76.5-151.4C70.9 109.6 35.6 54.8.3 0H487v486.7z"></path>
+                                            </svg>
+                                        </span>
+
+                                        {/* Content wrapper */}
+                                        <div className="relative z-10 flex items-center transition-all duration-700 group-hover/btn:gap-4 gap-3">
+
+                                            {/* Left Circle with Arrow */}
+                                            <div className="bg-white w-10 h-10 md:w-12 md:h-12 rounded-full flex justify-center items-center transition-all duration-700 ease-out shadow-lg -rotate-40 group-hover/btn:rotate-0 ">
+                                                <svg viewBox="0 0 24 24" className="w-5 h-5 md:w-5.5 md:h-5.5 fill-[#01a8fc] transition-all duration-700" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                                                </svg>
+                                            </div>
+
+                                            {/* Text */}
+                                            <span className="text-white font-semibold tracking-wide text-sm md:text-[17px] whitespace-nowrap transition-all duration-700 drop-shadow-sm group-hover/btn:tracking-wider">
+                                                Read More
+                                            </span>
+
                                         </div>
-                                        <span className="text-white font-semibold tracking-normal md:tracking-wide text-sm md:text-[17px] pr-2">Read More</span>
+
+                                        {/* Shimmer effect */}
+                                        <span className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/30 to-transparent transition-transform duration-1000 group-hover/btn:translate-x-full"></span>
+
                                     </button>
                                 </div>
                             </div>

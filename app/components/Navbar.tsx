@@ -166,16 +166,40 @@ export default function Navbar() {
                             ))}
                         </ul>
                     </div>
-                    <div className={`hidden lg:flex items-center gap-1 z-50 cursor-pointer ${scrolled ? "mt-0" : "mt-2"}`}>
-                        <Link href="/contact" className={`${styles.darkBtn} py-2.5 px-8 border border-white rounded-full text-md font-medium tracking-wide text-white transition-all duration-300 ease-in-out`}
-                            style={{ boxShadow: "0 2px 4px rgba(59, 188, 252, 0.550), inset 0 1px 0 rgba(255, 255, 255, 0.2)" }}>
-                            Get In Touch
+                    <div
+                        className={`hidden lg:flex items-center gap-2 z-50 group ${scrolled ? "mt-0" : "mt-2"}`}
+                    >
+                        <Link
+                            href="/contact"
+                            className="relative px-8 py-3 rounded-full bg-gradient-to-br from-[#3bbbfc] to-[#01a8fc] text-white text-sm font-semibold tracking-wide overflow-hidden transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(59,187,252,0.6),0_0_30px_rgba(59,187,252,0.3)]"
+                        >
+                            {/* Gradient overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#01a8fc] to-[#0d7ac2] opacity-0 transition-opacity duration-500 group-hover:opacity-100 rounded-full" />
+
+                            {/* Shimmer */}
+                            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
+
+                            <span className="relative z-10 transition-all duration-500 group-hover:tracking-wider">
+                                Get In Touch
+                            </span>
                         </Link>
-                        <span className={`w-12 h-12 ${styles.darkBtn} border border-white rounded-full flex justify-center items-center transition-all duration-300 ease-in-out`}
-                            style={{ boxShadow: "0 2px 4px rgba(59, 188, 252, 0.550), inset 0 1px 0 rgba(255, 255, 255, 0.2)" }}>
-                            <MoveUpRight size={18} color="white" />
-                        </span>
+
+                        <button className="relative w-11 h-11 rounded-full bg-linear-to-br from-[#3bbbfc] to-[#01a8fc] flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(59,187,252,0.6)] group-hover:rotate-45">
+
+                            {/* Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#01a8fc] to-[#0d7ac2] opacity-0 transition-opacity duration-500 group-hover:opacity-100 rounded-full" />
+
+                            {/* Pulse */}
+                            <span className="absolute inset-0 rounded-full border-2 border-[#3bbbfc] opacity-0 scale-90 transition-all duration-500 group-hover:opacity-60 group-hover:scale-110" />
+
+                            <MoveUpRight
+                                size={18}
+                                className="text-white relative z-10 transition-transform duration-500 group-hover:scale-110"
+                                strokeWidth={2.5}
+                            />
+                        </button>
                     </div>
+
                     <button aria-label="Toggle navigation menu" onClick={() => setOpen(!open)} className={`${styles.navigationMenu} lg:hidden z-50 ${scrolled ? "mt-0" : "mt-5"}`}>
                         {open ? <X size={25} className="text-white" /> : <Menu size={25} className="text-white" />}
                     </button>
