@@ -1,8 +1,8 @@
 'use client';
 
-// import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { motion } from "framer-motion";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
@@ -66,8 +66,11 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
                         <circle r="400" cx="400" cy="400" fill="url(#cccircular-grad)" opacity="0.5" />
                     </svg>
                 </div>
-                <div className="relative text-center mt-6 max-w-5xl mx-auto">
-                    <div className="bg-white/10 backdrop-blur-2xl border border-white/20 rounded-[18px] py-9 md:px-20.5 shadow-2xl relative overflow-hidden">
+                <motion.div className="relative text-center mt-6 max-w-5xl mx-auto" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}>
+                    <div className="border border-white/20 rounded-[18px] py-10 md:px-20.5 shadow-2xl relative overflow-hidden"
+                        style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)', 
+                        willChange: 'transform', transform: 'translateZ(0)' }}>
                         {/* Top accent line */}
                         <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-cyan-400 to-transparent"></div>
                         {/* Corner decorations */}
@@ -79,16 +82,18 @@ export default function ServiceDetailContent({ service }: ServiceDetailContentPr
                         <div className="absolute bottom-12 left-1/3 w-2.5 h-2.5 bg-cyan-300/30 rounded-full animate-float"></div>
                         {/* Content */}
                         <div className="relative z-10">
-                            <h1 className="text-[28px] md:text-6xl lg:text-[44px] font-bold mb-4 lg:mb-4 text-white">
-                                {service.shortTitle}
-                            </h1>
-                            <p className="text-[17px] max-w-2xl mx-auto text-white/90 leading-relaxed font-light">
+                            <motion.h1 className="text-[28px] md:text-6xl lg:text-[44px] font-bold mb-4 lg:mb-3 text-white" initial={{ opacity: 0 }}
+                              whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
+                               {service.shortTitle}
+                            </motion.h1>
+                            <motion.p className="text-[17px] max-w-2xl mx-auto text-white/90 leading-relaxed font-light" initial={{ opacity: 0 }}
+                              whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}>
                                 {service.shortDescription}
-                            </p>
+                            </motion.p>
                         </div>
                         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-32 bg-linear-to-t from-cyan-500/10 to-transparent blur-2xl"></div>
                     </div>
-                </div>
+                </motion.div>
             </section>
             <div className="w-full bg-black pt-22 pb-20 md:pb-80 px-5 md:px-26">
                 <div className="grid grid-cols-1 lg:grid-cols-4 gap-5">

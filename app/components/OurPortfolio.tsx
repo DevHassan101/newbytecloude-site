@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import Link from "next/link";
 import styles from './ourPortfolio.module.css';
 
@@ -56,6 +57,17 @@ export default function OurPortfolio() {
     setActiveCardId(activeCardId === id ? null : id);
   };
 
+  const headerVariants = {
+    hidden: { opacity: 0, y: -30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8
+      }
+    }
+  };
+
   return (
     <section className="main-portfolio-section bg-black relative pt-14 pb-0 md:py-24 px-6 md:px-28 overflow-hidden">
       {/* light1:top-right-glow */}
@@ -65,23 +77,54 @@ export default function OurPortfolio() {
       {/* portfolio-section-start */}
       <div className="portfolio-section">
         {/* portfolio-header-start */}
-        <div className="portfolio-header text-center relative">
-          <div className="inline-flex items-center gap-3 text-xs md:text-sm text-white uppercase tracking-widest">
+        <motion.div
+          className="services-header text-center relative"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={headerVariants}
+        >
+          <motion.div
+            className="inline-flex items-center gap-3 text-xs md:text-sm text-white uppercase tracking-widest"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <span className="w-2 h-2 bg-[#3bbbfc] rounded-full shadow-[0_0_10px_rgba(59,187,252,0.8)] animate-pulse" />
-            <span className="font-semibold">Our Portfolio</span>
-            <div className="w-8 h-px bg-linear-to-r from-[#3bbbfc] to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-300" />
-          </div>
-          <div className="mt-6 md:mt-8 text-2xl md:text-3xl lg:text-[46px] font-bold leading-[1.1] relative">
+            <span className="font-semibold">What we do</span>
+            <div className="w-8 h-px bg-linear-to-r from-[#3bbbfc] to-transparent opacity-50 transition-opacity duration-300" />
+          </motion.div>
+
+          <motion.div
+            className="mt-6 md:mt-8 text-2xl md:text-3xl lg:text-[46px] font-bold leading-[1.1] relative"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+          >
             <span className="text-white/95 inline-block hover:text-white transition-colors duration-300 mr-3">
               Projects that Reflect My
             </span>
             <br />
-            <span className="bg-linear-to-r from-[#3bbbfc] via-[#01a8fc] to-[#3bbbfc] bg-clip-text text-transparent bg-size-[200%_auto]">
+            <span className="bg-linear-to-r from-[#3bbbfc] via-[#01a8fc] to-[#3bbbfc] bg-clip-text text-transparent bg-size-[200%_auto] animate-gradient">
               Expertise and Vision
             </span>
             <div className="absolute -bottom-5 left-0 right-0 w-40 md:w-95 mx-auto h-px bg-linear-to-r from-transparent via-[#3bbbfc] to-transparent opacity-50" />
-          </div>
-        </div>
+          </motion.div>
+
+          {/* <motion.div
+            className="mt-10 md:mt-12 w-full md:max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <p className="text-[13px] md:text-[17px] text-white/80">
+              We combine technical expertise with bold design to build products that matter crafting seamless interactions that connect brands with people.
+            </p>
+          </motion.div> */}
+        </motion.div>
         {/* portfolio-header-end */}
 
         {/* porfolio-cards-start */}
