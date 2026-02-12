@@ -68,21 +68,21 @@ export default function AboutSection() {
                 </div>
                 <motion.div className="relative text-center mt-6 max-w-205 mx-auto" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}>
-                    <div className="border border-white/20 rounded-[18px] py-10 md:px-20.5 shadow-2xl relative overflow-hidden"
+                    <div className="border border-white/20 rounded-[18px] py-8 lg:py-10 md:px-20.5 shadow-2xl relative overflow-hidden"
                         style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)', 
                         willChange: 'transform', transform: 'translateZ(0)' }}>
                         {/* Top accent line */}
                         <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-cyan-400 to-transparent"></div>
                         {/* Corner decorations */}
-                        <div className="absolute top-4 left-4 lg:top-6 lg:left-6 w-12 h-12 border-t-2 border-l-2 border-cyan-400/40 rounded-tl-2xl"></div>
-                        <div className="absolute top-4 right-4 lg:top-6 lg:right-6 w-12 h-12 border-t-2 border-r-2 border-cyan-400/40 rounded-tr-2xl"></div>
+                        <div className="absolute top-3.5 left-3.5 lg:top-6 lg:left-6 w-9 h-9 lg:w-12 lg:h-12 border-t-2 border-l-2 border-cyan-400/40 rounded-tl-xl lg:rounded-tl-2xl"></div>
+                        <div className="absolute top-3.5 right-3.5 lg:top-6 lg:right-6 w-9 h-9 lg:w-12 lg:h-12 border-t-2 border-r-2 border-cyan-400/40 rounded-tr-xl lg:rounded-tr-2xl"></div>
                         {/* Floating particles */}
                         <div className="absolute top-8 left-1/2 w-2 h-2 bg-cyan-400/40 rounded-full animate-float"></div>
                         <div className="absolute top-16 right-1/3 w-2.5 h-2.5 bg-blue-400/30 rounded-full animate-float"></div>
                         <div className="absolute bottom-12 left-1/3 w-2.5 h-2.5 bg-cyan-300/30 rounded-full animate-float"></div>
                         {/* Content */}
                         <div className="relative z-10 px-6">
-                            <motion.h1 className="text-[28px] md:text-6xl lg:text-[54px] font-bold mb-1 lg:mb-3 text-white" initial={{ opacity: 0 }}
+                            <motion.h1 className="text-[27px] md:text-6xl lg:text-[54px] font-bold mb-1 lg:mb-3 text-white" initial={{ opacity: 0 }}
                               whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
                                 About Us
                             </motion.h1>
