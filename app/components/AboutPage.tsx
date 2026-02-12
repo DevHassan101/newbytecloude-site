@@ -74,8 +74,8 @@ export default function AboutSection() {
                         {/* Top accent line */}
                         <div className="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-transparent via-cyan-400 to-transparent"></div>
                         {/* Corner decorations */}
-                        <div className="absolute top-3.5 left-3.5 lg:top-6 lg:left-6 w-9 h-9 lg:w-12 lg:h-12 border-t-2 border-l-2 border-cyan-400/40 rounded-tl-xl lg:rounded-tl-2xl"></div>
-                        <div className="absolute top-3.5 right-3.5 lg:top-6 lg:right-6 w-9 h-9 lg:w-12 lg:h-12 border-t-2 border-r-2 border-cyan-400/40 rounded-tr-xl lg:rounded-tr-2xl"></div>
+                        <div className="absolute top-3 left-3 lg:top-6 lg:left-6 w-9 h-9 lg:w-12 lg:h-12 border-t-2 border-l-2 border-cyan-400/40 rounded-tl-xl lg:rounded-tl-2xl"></div>
+                        <div className="absolute top-3 right-3 lg:top-6 lg:right-6 w-9 h-9 lg:w-12 lg:h-12 border-t-2 border-r-2 border-cyan-400/40 rounded-tr-xl lg:rounded-tr-2xl"></div>
                         {/* Floating particles */}
                         <div className="absolute top-8 left-1/2 w-2 h-2 bg-cyan-400/40 rounded-full animate-float"></div>
                         <div className="absolute top-16 right-1/3 w-2.5 h-2.5 bg-blue-400/30 rounded-full animate-float"></div>
@@ -86,7 +86,7 @@ export default function AboutSection() {
                               whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
                                 About Us
                             </motion.h1>
-                            <motion.p className="text-xs lg:text-[17px] text-white/90 leading-relaxed font-light" initial={{ opacity: 0 }}
+                            <motion.p className="text-[12.5px] lg:text-[17px] text-white/90 leading-relaxed font-light" initial={{ opacity: 0 }}
                               whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}>
                                 We are a collective of developers, designers, and strategists who obsess over the smallest "bytes" of data to ensure your "cloud" presence is nothing short of legendary.
                             </motion.p>
