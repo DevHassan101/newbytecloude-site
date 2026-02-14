@@ -66,7 +66,7 @@ export default function AboutSection() {
                         <circle r="400" cx="400" cy="400" fill="url(#cccircular-grad)" opacity="0.5" />
                     </svg>
                 </div>
-                <motion.div className="relative text-center mt-6 max-w-205 mx-auto" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
+                <motion.div className="relative text-center mt-8 max-w-205 mx-auto" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }} transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}>
                     <div className="border border-white/20 rounded-[18px] py-8 lg:py-10 md:px-20.5 shadow-2xl relative overflow-hidden"
                         style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%)', 
@@ -82,7 +82,7 @@ export default function AboutSection() {
                         <div className="absolute bottom-12 left-1/3 w-2.5 h-2.5 bg-cyan-300/30 rounded-full animate-float"></div>
                         {/* Content */}
                         <div className="relative z-10 px-6">
-                            <motion.h1 className="text-[27px] md:text-6xl lg:text-[54px] font-bold mb-1 lg:mb-3 text-white" initial={{ opacity: 0 }}
+                            <motion.h1 className="text-[28.5px] md:text-6xl lg:text-[54px] font-bold mb-1 lg:mb-3 text-white" initial={{ opacity: 0 }}
                               whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
                                 About Us
                             </motion.h1>

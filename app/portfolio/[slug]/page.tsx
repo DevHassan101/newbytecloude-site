@@ -109,8 +109,9 @@ export default function ProjectDetailPage({ params }: ProjectPageProps) {
                                     spaceBetween={0}
                                     slidesPerView={1}
                                     speed={800}
+                                    loop={project.images.length > 5} 
                                     onSwiper={setSwiperInstance}
-                                    onSlideChange={(swiper) => setActiveSlide(swiper.activeIndex)}
+                                    onSlideChange={(swiper) => setActiveSlide(swiper.realIndex)} 
                                     autoplay={{
                                         delay: 3000,
                                         disableOnInteraction: false,

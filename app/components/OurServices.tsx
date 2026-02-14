@@ -2,13 +2,27 @@
 import Link from "next/link";
 import { ArrowRight } from 'lucide-react';
 import dynamic from 'next/dynamic';
-import { motion } from 'framer-motion';
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 const Icon = dynamic(() => import('@iconify/react').then(mod => mod.Icon), {
     loading: () => <span />,
     ssr: false
 });
 
 export default function OurServices() {
+
+    // Initialize AOS
+    useEffect(() => {
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 100,
+            delay: 0,
+        });
+    }, []);
 
     const services = [
         {
@@ -136,63 +150,35 @@ export default function OurServices() {
         },
     ];
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.12,
-                delayChildren: 0.1
-            }
-        }
-    };
-
-    const cardVariants = {
-        hidden: {
-            opacity: 0,
-            y: 40,
-            scale: 0.95
-        },
-        visible: {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: {
-                duration: 0.4,
-            }
-        }
-    };
-
-    const headerVariants = {
-        hidden: { opacity: 0, y: -30 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.8
-            }
-        }
-    };
-
     return (
         <section className="main-services-section bg-black relative py-16 md:py-20 px-6 md:px-26 overflow-hidden">
-            {/* light1:top-right-glow */}
+
+            {/* Animated background glows */}
             <div className="absolute top-12 -right-24 w-120 h-100 bg-[#3bbbfc] opacity-10 blur-[100px] rounded-full"></div>
-            {/* light2:bottom-left-glow */}
             <div className="absolute bottom-12 -left-24 w-120 h-100 bg-[#3bbbfc] opacity-10 blur-[100px] rounded-full"></div>
-            {/* services-section-start */}
+
             <div className="services-section w-full relative z-10">
-                {/* services-header-start */}
-                <motion.div className="services-header text-center relative" initial="hidden" whileInView="visible"
-                  viewport={{ once: true, amount: 0.3 }} variants={headerVariants}>
-                    <motion.div className="inline-flex items-center gap-3 text-xs md:text-sm text-white uppercase tracking-widest" 
-                        initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.2 }}>
+
+                {/* Header Section with AOS */}
+                <div className="services-header text-center relative">
+                    {/* Top badge */}
+                    <div
+                        data-aos="fade-down"
+                        data-aos-duration="600"
+                        className="inline-flex items-center gap-3 text-xs md:text-sm text-white uppercase tracking-widest"
+                    >
                         <span className="w-2 h-2 bg-[#3bbbfc] rounded-full shadow-[0_0_10px_rgba(59,187,252,0.8)] animate-pulse" />
                         <span className="font-semibold">What we do</span>
                         <div className="w-8 h-px bg-linear-to-r from-[#3bbbfc] to-transparent opacity-50 transition-opacity duration-300" />
-                    </motion.div>
-                    <motion.div className="mt-6 md:mt-8 text-2xl md:text-3xl lg:text-[46px] font-bold leading-[1.1] relative" 
-                      initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.3 }}>
+                    </div>
+
+                    {/* Main title */}
+                    <div
+                        data-aos="fade-up"
+                        data-aos-delay="200"
+                        data-aos-duration="800"
+                        className="mt-6 md:mt-8 text-2xl md:text-3xl lg:text-[46px] font-bold leading-[1.1] relative"
+                    >
                         <span className="text-white/95 inline-block hover:text-white transition-colors duration-300 mr-3">
                             Smart Services For
                         </span>
@@ -201,94 +187,115 @@ export default function OurServices() {
                             Digital Transformation
                         </span>
                         <div className="absolute -bottom-5 left-0 right-0 w-40 md:w-95 mx-auto h-px bg-linear-to-r from-transparent via-[#3bbbfc] to-transparent opacity-50" />
-                    </motion.div>
+                    </div>
 
-                    <motion.div className="mt-10 md:mt-12 w-full md:max-w-3xl mx-auto" 
-                     initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6, delay: 0.5 }}>
+                    {/* Description */}
+                    <div
+                        data-aos="fade-up"
+                        data-aos-delay="400"
+                        data-aos-duration="800"
+                        className="mt-10 md:mt-12 w-full md:max-w-3xl mx-auto"
+                    >
                         <p className="text-[13px] md:text-[17px] text-white/80">
                             We combine technical expertise with bold design to build products that matter crafting seamless interactions that connect brands with people.
                         </p>
-                    </motion.div>
-                </motion.div>
-                {/* services-header-end */}
-                {/* services-cards-start */}
-                <motion.div className="services-grid grid gap-7 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-10 md:mt-16 px-0 md:px-4" initial="hidden"
-                    whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={containerVariants}>
+                    </div>
+                </div>
+
+                {/* Services Cards with AOS */}
+                <div className="services-grid grid gap-7 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-10 md:mt-16 px-0 md:px-4">
                     {services.map((service, index) => (
-                        <motion.div key={index} variants={cardVariants} className="service-card group relative rounded-2xl md:rounded-3xl overflow-hidden border-2 border-[#3bbbfc]/55 bg-black cursor-pointer
-                        hover:-translate-y-2.5 hover:scale-[1.02] hover:border-[#3bbbfc] hover:shadow-[0_20px_60px_rgba(59,187,252,0.25)] transition-all duration-400 ease-in-out">
-                            {/* Animated glow corner */}
-                            <div className="absolute -bottom-24 right-0 w-50 h-54 bg-[#01a8fc]/25 rounded-br-xl blur-[80px] transition-all duration-700 group-hover:bg-[#01a8fc]/40 group-hover:blur-[100px]" />
-                            {/* Top edge glow */}
-                            <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-all duration-700"
-                                style={{ background: 'linear-gradient(90deg, transparent 0%, #3bbbfc 50%, transparent 100%)' }} />
-                            {/* Bottom edge glow */}
-                            <div className="absolute bottom-0 left-0 right-0 w-50 mx-auto h-0.5 opacity-60 group-hover:opacity-100 transition-all duration-500"
-                                style={{ background: 'linear-gradient(90deg, transparent 0%, #3bbbfc 50%, transparent 100%)' }} />
-                            <div className="relative p-8 h-full flex flex-col">
-                                <div className="flex items-start justify-between mb-8">
-                                    <div className="relative">
-                                        <div className="relative w-15 h-15 md:w-17 md:h-17 rounded-[10px] md:rounded-[13px] flex items-center justify-center 
-                                            transition-all duration-500 ease-out group-hover:scale-110 group-hover:rotate-3"style={{ background: 'linear-gradient(135deg, #3bbbfc 0%, #0188fc 100%)' }}>
-                                            <div className="absolute inset-0 rounded-[10px] md:rounded-[15px] border-2 border-[#3bbbfc]/80 opacity-0 scale-90 transition-all duration-700 group-hover:opacity-100 group-hover:scale-110" />
-                                            {typeof service.iconName === 'string' ? (
-                                                <Icon icon={service.iconName} className="w-8 h-8 md:w-10 md:h-10 text-white relative z-10" />
-                                            ) : (
-                                                <service.iconName className="w-8 h-8 md:w-9 md:h-9 text-white relative z-10" />
-                                            )}
+                        <div key={index} className="service-card-fade" data-aos="fade-up" data-aos-delay="100" data-aos-duration="700">
+                            <div className="service-card group relative rounded-2xl md:rounded-3xl overflow-hidden border-2 border-[#3bbbfc]/55 bg-black cursor-pointer
+                            hover:-translate-y-2.5 hover:scale-[1.02] hover:border-[#3bbbfc] hover:shadow-[0_20px_60px_rgba(59,187,252,0.25)] transition-all duration-500 ease-in-out">
+                                {/* Animated glow corner */}
+                                <div className="absolute -bottom-24 right-0 w-50 h-54 bg-[#01a8fc]/25 rounded-br-xl blur-[80px] transition-all duration-700 group-hover:bg-[#01a8fc]/40 group-hover:blur-[100px]" />
+                                {/* Top edge glow */}
+                                <div className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-all duration-700"
+                                    style={{ background: 'linear-gradient(90deg, transparent 0%, #3bbbfc 50%, transparent 100%)' }} />
+                                {/* Bottom edge glow */}
+                                <div className="absolute bottom-0 left-0 right-0 w-50 mx-auto h-0.5 opacity-60 group-hover:opacity-100 transition-all duration-500"
+                                    style={{ background: 'linear-gradient(90deg, transparent 0%, #3bbbfc 50%, transparent 100%)' }} />
+                                <div className="relative p-8 h-full flex flex-col">
+                                    {/* Icon and Number */}
+                                    <div className="flex items-start justify-between mb-8">
+                                        <div className="relative">
+                                            <div className="relative w-15 h-15 md:w-17 md:h-17 rounded-[10px] md:rounded-[13px] flex items-center justify-center 
+                                            transition-all duration-500 ease-out group-hover:scale-110 group-hover:rotate-3" style={{ background: 'linear-gradient(135deg, #3bbbfc 0%, #0188fc 100%)' }}>
+                                                <div className="absolute inset-0 rounded-[10px] md:rounded-[15px] border-2 border-[#3bbbfc]/80 opacity-0 scale-90 transition-all duration-700 group-hover:opacity-100 group-hover:scale-110" />
+                                                {typeof service.iconName === 'string' ? (
+                                                    <Icon icon={service.iconName} className="w-8 h-8 md:w-10 md:h-10 text-white relative z-10" />
+                                                ) : (
+                                                    <service.iconName className="w-8 h-8 md:w-9 md:h-9 text-white relative z-10" />
+                                                )}
+                                            </div>
+                                        </div>
+
+                                        <div className="flex items-center gap-3">
+                                            <div className="h-px w-12 opacity-50 group-hover:w-16 group-hover:opacity-100 transition-all duration-500"
+                                                style={{ background: 'linear-gradient(90deg, transparent 0%, #3bbbfc 100%)' }} />
+                                            <span className="text-4xl md:text-[45px] font-bold tracking-tight transition-all duration-500 group-hover:scale-110"
+                                                style={{
+                                                    background: 'linear-gradient(135deg, #3bbbfc 0%, #0188fc 100%)',
+                                                    WebkitBackgroundClip: 'text',
+                                                    WebkitTextFillColor: 'transparent',
+                                                    backgroundClip: 'text',
+                                                    filter: 'drop-shadow(0 0 20px rgba(59, 187, 252, 0.3))'
+                                                }}>
+                                                {service.number}
+                                            </span>
                                         </div>
                                     </div>
-                                    <div className="flex items-center gap-3">
-                                        <div className="h-px w-12 opacity-50 group-hover:w-16 group-hover:opacity-100 transition-all duration-500"
-                                            style={{ background: 'linear-gradient(90deg, transparent 0%, #3bbbfc 100%)' }} />
-                                        <span className="text-4xl md:text-[45px] font-bold tracking-tight transition-all duration-500 group-hover:scale-110"
-                                            style={{ background: 'linear-gradient(135deg, #3bbbfc 0%, #0188fc 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-                                                backgroundClip: 'text', filter: 'drop-shadow(0 0 20px rgba(59, 187, 252, 0.3))'}}>
-                                            {service.number}
-                                        </span>
-                                    </div>
-                                </div>
-                                <h3 className="text-xl md:text-2xl font-bold text-white mb-2 md:mb-4 transition-colors duration-300 group-hover:text-[#3bbbfc]">
-                                    {service.title}
-                                </h3>
-                                <div className="h-0.5 rounded-full mb-6 transition-all duration-500 group-hover:w-24"
-                                    style={{ width: '50px', background: 'linear-gradient(90deg, #3bbbfc 0%, rgba(59, 187, 252, 0.2) 100%)' }} />
-                                <ul className="space-y-3 mb-8 grow">
-                                    {service.features.map((feature, idx) => (
-                                        <li key={idx} className="flex items-start gap-3 text-white/90 text-[12.5px] md:text-sm leading-relaxed transition-all duration-300 group-hover:text-gray-300">
-                                            <div className="w-1.5 h-1.5 rounded-full mt-2 shrink-0 transition-all duration-300 group-hover:scale-125"
-                                                style={{ background: 'linear-gradient(135deg, #3bbbfc 0%, #0188fc 100%)', boxShadow: '0 0 8px rgba(59, 187, 252, 0.6)' }} />
-                                            <span>{feature}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                                <Link href={`/services/${service.slug}`} aria-label={`Learn more about ${service.title || service.number}`} className="block">
-                                    <div className="mt-auto pt-4">
-                                        <div className="group/readmore inline-flex items-center gap-3 cursor-pointer">
-                                            <span className="relative text-[#ffffff] font-semibold text-sm md:text-[16.5px] tracking-wide transition-all duration-500 group-hover/readmore:tracking-wider group-hover/readmore:text-[#3bbbfc]">
-                                                Read More
-                                                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-linear-to-r from-[#3bbbfc] to-[#0188fc] transition-all duration-500 group-hover/readmore:w-full"></span>
-                                            </span>
 
-                                            <div className="relative">
-                                                <div className="w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-all duration-700 ease-out -rotate-35 group-hover/readmore:rotate-0 group-hover/readmore:translate-x-2 overflow-hidden"
-                                                    style={{ background: 'linear-gradient(135deg, #3bbbfc 0%, #0188fc 100%)', boxShadow: '0 2px 8px rgba(59, 187, 252, 0.3)' }}>
-                                                    <span className="absolute inset-0 rounded-full border-2 border-[#3bbbfc] opacity-0 scale-100 transition-all duration-700 group-hover/readmore:scale-150 group-hover/readmore:opacity-0"></span>
-                                                    <ArrowRight size={15} className="text-white relative z-10 transition-all duration-500" strokeWidth={3} aria-hidden="true" />
-                                                </div>
-                                                <div className="absolute top-0 left-0 w-8 h-8 md:w-9 md:h-9 rounded-full opacity-0 scale-50 transition-all duration-700 group-hover/readmore:opacity-30 group-hover/readmore:scale-100 group-hover/readmore:-translate-x-1"
-                                                    style={{ background: 'linear-gradient(135deg, #3bbbfc 0%, #0188fc 100%)' }}>
+                                    {/* Title */}
+                                    <h3 className="text-xl md:text-2xl font-bold text-white mb-2 md:mb-4 transition-colors duration-300 group-hover:text-[#3bbbfc]">
+                                        {service.title}
+                                    </h3>
+
+                                    {/* Divider */}
+                                    <div className="h-0.5 rounded-full mb-6 transition-all duration-500 group-hover:w-24"
+                                        style={{ width: '50px', background: 'linear-gradient(90deg, #3bbbfc 0%, rgba(59, 187, 252, 0.2) 100%)' }} />
+
+                                    {/* Features List */}
+                                    <ul className="space-y-3 mb-8 grow">
+                                        {service.features.map((feature, idx) => (
+                                            <li key={idx} className="flex items-start gap-3 text-white/90 text-[12.5px] md:text-sm leading-relaxed transition-all duration-300 group-hover:text-gray-300">
+                                                <div className="w-1.5 h-1.5 rounded-full mt-2 shrink-0 transition-all duration-300 group-hover:scale-125"
+                                                    style={{ background: 'linear-gradient(135deg, #3bbbfc 0%, #0188fc 100%)', boxShadow: '0 0 8px rgba(59, 187, 252, 0.6)' }} />
+                                                <span>{feature}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+
+                                    {/* Read More Button */}
+                                    <Link href={`/services/${service.slug}`} aria-label={`Learn more about ${service.title || service.number}`} className="block">
+                                        <div className="mt-auto pt-4">
+                                            <div className="group/readmore inline-flex items-center gap-3 cursor-pointer">
+                                                <span className="relative text-[#ffffff] font-semibold text-sm md:text-[16.5px] tracking-wide transition-all duration-500 group-hover/readmore:tracking-wider group-hover/readmore:text-[#3bbbfc]">
+                                                    Read More
+                                                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-linear-to-r from-[#3bbbfc] to-[#0188fc] transition-all duration-500 group-hover/readmore:w-full"></span>
+                                                </span>
+
+                                                <div className="relative">
+                                                    <div className="w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-all duration-700 ease-out -rotate-35 group-hover/readmore:rotate-0 group-hover/readmore:translate-x-2 overflow-hidden"
+                                                        style={{ background: 'linear-gradient(135deg, #3bbbfc 0%, #0188fc 100%)', boxShadow: '0 2px 8px rgba(59, 187, 252, 0.3)' }}>
+                                                        <span className="absolute inset-0 rounded-full border-2 border-[#3bbbfc] opacity-0 scale-100 transition-all duration-700 group-hover/readmore:scale-150 group-hover/readmore:opacity-0"></span>
+                                                        <ArrowRight size={15} className="text-white relative z-10 transition-all duration-500" strokeWidth={3} aria-hidden="true" />
+                                                    </div>
+                                                    <div className="absolute top-0 left-0 w-8 h-8 md:w-9 md:h-9 rounded-full opacity-0 scale-50 transition-all duration-700 group-hover/readmore:opacity-30 group-hover/readmore:scale-100 group-hover/readmore:-translate-x-1"
+                                                        style={{ background: 'linear-gradient(135deg, #3bbbfc 0%, #0188fc 100%)' }}>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </Link>
-                            </div>
+                                    </Link>
+                                </div>
 
-                        </motion.div>
+                            </div>
+                        </div>
                     ))}
-                </motion.div>
-                {/* services-cards-end */}
+                </div>
+
             </div>
         </section>
     );
