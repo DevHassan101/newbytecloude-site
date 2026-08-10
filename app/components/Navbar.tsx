@@ -1,239 +1,325 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import Link from "next/link";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { ChevronDown, MoveUpRight, X, Menu } from 'lucide-react';
-import styles from './navbar.module.css';
+import {
+  ChevronDown,
+  MoveUpRight,
+  X,
+  Menu,
+  MoveRight,
+  MoveUp,
+} from "lucide-react";
+import styles from "./navbar.module.css";
 
 const menu = [
-    {
-        name: 'Home',
-        path: '/',
-        ariaLabel: 'Navigate to home page'
-    },
-    {
-        name: 'About Us',
-        path: '/about',
-        ariaLabel: 'Learn more about us'
-    },
-    {
-        name: 'Services',
-        ariaLabel: 'View our services',
-        dropdown: [
-            {
-                name: 'Web Designing',
-                path: '/services/webDesigning',
-                ariaLabel: 'Learn about our web designing services'
-            },
-            {
-                name: 'Web Development',
-                path: '/services/webDevelopment',
-                ariaLabel: 'Learn about our web development services'
-            },
-            {
-                name: 'App Development',
-                path: '/services/appDevelopment',
-                ariaLabel: 'Learn about our app development services'
-            },
-            {
-                name: 'SEO Optimization',
-                path: '/services/seoOptimization',
-                ariaLabel: 'Learn about our SEO optimization services'
-            },
-            {
-                name: 'Figma UI/UX Design',
-                path: '/services/uiuxDesign',
-                ariaLabel: 'Learn about our UI/UX design services'
-            },
-            {
-                name: 'Graphic Designing',
-                path: '/services/graphicDesigning',
-                ariaLabel: 'Learn about our graphic designing services'
-            },
-        ],
-    },
-    {
-        name: 'Portfolio',
-        path: '/portfolio',
-        ariaLabel: 'View our portfolio'
-    },
-    {
-        name: 'Contact Us',
-        path: '/contact',
-        ariaLabel: 'Get in touch with us'
-    }
+  {
+    name: "Home",
+    path: "/",
+    ariaLabel: "Navigate to home page",
+  },
+  {
+    name: "About Us",
+    path: "/about",
+    ariaLabel: "Learn more about us",
+  },
+  {
+    name: "Services",
+    ariaLabel: "View our services",
+    dropdown: [
+      {
+        name: "Web Designing",
+        path: "/services/webDesigning",
+        ariaLabel: "Learn about our web designing services",
+      },
+      {
+        name: "Web Development",
+        path: "/services/webDevelopment",
+        ariaLabel: "Learn about our web development services",
+      },
+      {
+        name: "App Development",
+        path: "/services/appDevelopment",
+        ariaLabel: "Learn about our app development services",
+      },
+      {
+        name: "SEO Optimization",
+        path: "/services/seoOptimization",
+        ariaLabel: "Learn about our SEO optimization services",
+      },
+      {
+        name: "Figma UI/UX Design",
+        path: "/services/uiuxDesign",
+        ariaLabel: "Learn about our UI/UX design services",
+      },
+      {
+        name: "Graphic Designing",
+        path: "/services/graphicDesigning",
+        ariaLabel: "Learn about our graphic designing services",
+      },
+    ],
+  },
+  {
+    name: "Portfolio",
+    path: "/portfolio",
+    ariaLabel: "View our portfolio",
+  },
+  {
+    name: "Contact Us",
+    path: "/contact",
+    ariaLabel: "Get in touch with us",
+  },
 ];
 
 export default function Navbar() {
-    const [open, setOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const [servicesOpen, setServicesOpen] = useState(false);
-    const pathname = usePathname();
-    const isHome = pathname === "/";
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
-    useEffect(() => {
-        let ticking = false;
+  useEffect(() => {
+    let ticking = false;
 
-        const handleScroll = () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    setScrolled(window.scrollY > 20);
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        };
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
 
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [open]);
 
-    useEffect(() => {
-        if (open) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'unset';
-        }
-        return () => {
-            document.body.style.overflow = 'unset';
-        };
-    }, [open]);
+  // const maskUrl = `"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'><path d='M0,0 C50,0 50,100 100,100 H900 C950,100 950,0 1000,0 Z' fill='black'/></svg>"`;
 
-    // const maskUrl = `"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'><path d='M0,0 C50,0 50,100 100,100 H900 C950,100 950,0 1000,0 Z' fill='black'/></svg>"`;
-
-    return (
-        <>
-            <header className={`w-full fixed top-0 left-0 z-50 px-6 lg:px-10 ${scrolled ? "bg-black shadow-md shadow-[#3bbbfc]" : isHome ? "bg-transparent" : "bg-transparent"}`}>
-                <nav className={`flex items-center justify-between transition-all duration-500 ease-in-out ${scrolled ? "py-4.5 lg:py-2.5" : "py-0"}`}>
-                    <Link href="/" className={`text-[22px] md:text-3xl flex justify-center items-center font-bold tracking-tight leading-tight text-white z-50 ${scrolled ? "mt-0" : "mt-5 md:mt-2"}`}>
-                        Byte<span className={`transition-colors duration-700 ease-in-out ${scrolled ? "text-[#5cc9ff]" : isHome ? "text-[#5cc9ff]" : "text-white"}`}>Cloude</span>
-                        <span className='text-white'>.</span>
+  return (
+    <>
+      <header
+        className={`w-full fixed top-0 left-0 z-50 px-6 lg:px-10 ${scrolled ? "bg-black shadow-md shadow-[#3bbbfc]" : isHome ? "bg-transparent" : "bg-transparent"}`}
+      >
+        <nav
+          className={`flex items-center justify-between transition-all duration-500 ease-in-out ${scrolled ? "py-4.5 lg:py-2.5" : "py-0"}`}
+        >
+          <Link
+            href="/"
+            className={`text-[22px] md:text-3xl flex justify-center items-center font-bold tracking-tight leading-tight text-white z-50 ${scrolled ? "mt-0" : "mt-5 md:mt-2"}`}
+          >
+            Byte
+            <span
+              className={`transition-colors duration-700 ease-in-out ${scrolled ? "text-[#5cc9ff]" : isHome ? "text-[#5cc9ff]" : "text-white"}`}
+            >
+              Cloude
+            </span>
+            <span className="text-white">.</span>
+          </Link>
+          <div
+            className={`hidden lg:flex items-center justify-center relative h-17 self-start transition-all duration-700 ease-in-out ${scrolled ? "bg-transparent" : ""}`}
+          >
+            <div
+              className={`absolute inset-0 bg-white transition-opacity duration-700 ease-in-out ${styles.maskShape} ${scrolled ? "invisible" : "visible"}`}
+            />
+            <ul className="relative flex items-center gap-8 xl:gap-12 px-20 h-full z-10">
+              {menu.map((item) => (
+                <li
+                  key={item.name}
+                  className="relative group flex items-center h-full"
+                >
+                  {!item.dropdown ? (
+                    <Link
+                      href={item.path}
+                      className={`text-[15px] tracking-wider font-medium transition-all duration-700 ease-in-out uppercase ${scrolled ? "text-white hover:text-[#49bdf7]" : "hover:text-blue-600"}`}
+                      style={!scrolled ? { color: "#0066cc" } : {}}
+                      aria-label={item.ariaLabel}
+                    >
+                      {item.name}
                     </Link>
-                    <div className={`hidden lg:flex items-center justify-center relative h-17 self-start transition-all duration-700 ease-in-out ${scrolled ? "bg-transparent" : ""}`}>
-                        <div className={`absolute inset-0 bg-white transition-opacity duration-700 ease-in-out ${styles.maskShape} ${scrolled ? "invisible" : "visible"}`} />
-                        <ul className="relative flex items-center gap-8 xl:gap-12 px-20 h-full z-10">
-                            {menu.map((item) => (
-                                <li key={item.name} className="relative group flex items-center h-full">
-                                    {!item.dropdown ? (
-                                        <Link
-                                            href={item.path}
-                                            className={`text-[15px] tracking-wider font-medium transition-all duration-700 ease-in-out uppercase ${scrolled ? "text-white hover:text-[#49bdf7]" : "hover:text-blue-600"}`}
-                                            style={!scrolled ? { color: "#0066cc" } : {}}
-                                            aria-label={item.ariaLabel}
-                                        >
-                                            {item.name}
-                                        </Link>
-                                    ) : (
-                                        <div className="relative h-full flex items-center">
-                                            <span
-                                                className={`cursor-pointer flex items-center text-[15px] tracking-wider font-medium transition-all duration-700 ease-in-out uppercase ${scrolled ? "text-white hover:text-[#5cc9ff]" : ""}`}
-                                                style={!scrolled ? { color: "#0066cc" } : {}}
-                                                aria-label={item.ariaLabel}
-                                                role="button"
-                                                tabIndex={0}
-                                                aria-expanded="false"
-                                                aria-haspopup="true"
-                                            >
-                                                {item.name} <ChevronDown size={18} className="ml-1" aria-hidden="true" />
-                                            </span>
+                  ) : (
+                    <div className="relative h-full flex items-center">
+                      <span
+                        className={`cursor-pointer flex items-center text-[15px] tracking-wider font-medium transition-all duration-700 ease-in-out uppercase ${scrolled ? "text-white hover:text-[#5cc9ff]" : ""}`}
+                        style={!scrolled ? { color: "#0066cc" } : {}}
+                        aria-label={item.ariaLabel}
+                        role="button"
+                        tabIndex={0}
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                      >
+                        {item.name}{" "}
+                        <ChevronDown
+                          size={18}
+                          className="ml-1"
+                          aria-hidden="true"
+                        />
+                      </span>
 
-                                            <ul
-                                                className={`invisible absolute left-0 pt-4 z-60 w-60 opacity-0 transform translate-y-4 transition-all duration-300 ease-out group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 ${scrolled ? "top-9" : "top-9"}`}
-                                                role="menu"
-                                                aria-label={`${item.name} submenu`}
-                                            >
-                                                <div className={`p-2.5 rounded-lg shadow-lg transition-all duration-700 ease-in-out ${scrolled ? "bg-black border border-white/10" : "bg-white border border-gray-300"}`}>
-                                                    {item.dropdown.map((sub) => (
-                                                        <li key={sub.name} role="none">
-                                                            <Link
-                                                                href={sub.path}
-                                                                className={`block px-4 py-3 rounded-md uppercase text-[15px] tracking-wider font-medium transition-all duration-700 ease-in-out ${scrolled ? "text-white hover:bg-white/10 hover:text-[#5cc9ff]" : "hover:bg-blue-50 hover:text-blue-600"}`}
-                                                                style={!scrolled ? { color: "#0066cc" } : {}}
-                                                                aria-label={sub.ariaLabel}
-                                                                role="menuitem"
-                                                            >
-                                                                {sub.name}
-                                                            </Link>
-                                                        </li>
-                                                    ))}
-                                                </div>
-                                            </ul>
-                                        </div>
-                                    )}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className={`hidden lg:flex items-center gap-1 z-50 group ${scrolled ? "mt-0" : "mt-2"}`}>
-                        <Link href="/contact" aria-label='linkToContactUs'className="relative px-8 py-3 rounded-full bg-linear-to-br from-[#3bbbfc] to-[#01a8fc] text-white text-sm font-semibold tracking-wide overflow-hidden transition-all duration-500 group-hover:shadow-[0_0_5px_rgba(59,187,252,0.6),0_0_5px_rgba(59,187,252,0.3)]">
-                            <div className="absolute inset-0 bg-linear-to-br from-[#01a8fc] to-[#0d7ac2] opacity-0 transition-opacity duration-500 group-hover:opacity-100 rounded-full" />
-                            <span className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/25 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
-                            <span className="relative z-10 transition-all duration-500 group-hover:tracking-wider">
-                                Get In Touch
-                            </span>
-                        </Link>
-                        <button aria-label='rightToContactUs' className="relative w-11 h-11 rounded-full bg-linear-to-br from-[#3bbbfc] to-[#01a8fc] flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(59,187,252,0.6)] group-hover:rotate-45">
-                            <div className="absolute inset-0 bg-linear-to-br from-[#01a8fc] to-[#0d7ac2] opacity-0 transition-opacity duration-500 group-hover:opacity-100 rounded-full" />
-                            <span className="absolute inset-0 rounded-full border-2 border-[#3bbbfc] opacity-0 scale-90 transition-all duration-500 group-hover:opacity-60 group-hover:scale-110" />
-                            <MoveUpRight size={18} className="text-white relative z-10 transition-transform duration-500 group-hover:scale-110" strokeWidth={2.5} />
-                        </button>
-                    </div>
-                    <button aria-label="Toggle navigation menu" onClick={() => setOpen(!open)} className={`${styles.navigationMenu} lg:hidden z-50 ${scrolled ? "mt-0" : "mt-5"}`}>
-                        {open ? <X size={25} className="text-white" /> : <Menu size={25} className="text-white" />}
-                    </button>
-                </nav>
-            </header>
-
-            <div className={`fixed inset-0 bg-black/60 z-40 lg:hidden backdrop-blur-sm transition-opacity duration-300 ${open ? 'opacity-100' : 'opacity-0 pointer-events-none'}`} onClick={() => setOpen(false)} />
-
-            <div className={`fixed top-0 left-0 h-full w-72 bg-black rounded-4xl z-50 transform transition-transform duration-500 ease-out ${open ? 'translate-x-0' : '-translate-x-full'}`}>
-                <div className="flex flex-col h-full">
-                    <div className="p-6 border-b border-[#3bbbfc]/40">
-                        <Link href="/" className={`text-2xl font-bold tracking-tight leading-tight text-white z-50 ${scrolled ? "mt-0" : "mt-5 md:mt-2"}`}>
-                            Byte<span className={`transition-colors duration-700 ease-in-out ${scrolled ? "text-[#5cc9ff]" : isHome ? "text-[#5cc9ff]" : "text-white"}`}>Cloude</span>
-                            <span className='text-white'>.</span>
-                        </Link>
-                    </div>
-                    <ul className="flex-1 overflow-y-auto pb-5">
-                        {menu.map((item) => (
-                            <li key={item.name} className="border-b border-[#3bbbfc]/40">
-                                {!item.dropdown ? (
-                                    <Link href={item.path} onClick={() => setOpen(false)} className="block px-6 py-4 text-white font-medium hover:text-blue-500">
-                                        {item.name}
-                                    </Link>
-                                ) : (
-                                    <div>
-                                        <button onClick={() => setServicesOpen(!servicesOpen)} className="w-full flex items-center justify-between px-6 py-4 text-white font-medium">
-                                            {item.name}
-                                            <ChevronDown size={20} className={`transform transition-transform ${servicesOpen ? 'rotate-180' : ''}`} />
-                                        </button>
-                                        <div className={`overflow-hidden transition-all duration-300 ${servicesOpen ? 'max-h-72' : 'max-h-0'}`}>
-                                            <ul className="bg-gray-900">
-                                                {item.dropdown.map((sub) => (
-                                                    <li key={sub.name}>
-                                                        <Link href={sub.path} onClick={() => setOpen(false)} className="block px-10 py-3 text-sm text-gray-400 hover:text-blue-500">
-                                                            {sub.name}
-                                                        </Link>
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                )}
+                      <ul
+                        className={`invisible absolute left-0 pt-4 z-60 w-60 opacity-0 transform translate-y-4 transition-all duration-300 ease-out group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 ${scrolled ? "top-9" : "top-9"}`}
+                        role="menu"
+                        aria-label={`${item.name} submenu`}
+                      >
+                        <div
+                          className={`p-2.5 rounded-lg shadow-lg transition-all duration-700 ease-in-out ${scrolled ? "bg-black border border-white/10" : "bg-white border border-gray-300"}`}
+                        >
+                          {item.dropdown.map((sub) => (
+                            <li key={sub.name} role="none">
+                              <Link
+                                href={sub.path}
+                                className={`block px-4 py-3 rounded-md uppercase text-[15px] tracking-wider font-medium transition-all duration-700 ease-in-out ${scrolled ? "text-white hover:bg-white/10 hover:text-[#5cc9ff]" : "hover:bg-blue-50 hover:text-blue-600"}`}
+                                style={!scrolled ? { color: "#0066cc" } : {}}
+                                aria-label={sub.ariaLabel}
+                                role="menuitem"
+                              >
+                                {sub.name}
+                              </Link>
                             </li>
-                        ))}
-                    </ul>
-                    <div className="p-6 flex items-center gap-2 border-t border-[#3bbbfc]/40">
-                        <Link href="/contact" className={`${styles.darkBtn} flex justify-between items-center w-[86%] mx-auto py-2.5 px-8 border border-white rounded-full text-[17px] font-medium tracking-wide text-white transition-all duration-300 ease-in-out`}
-                            style={{ boxShadow: "0 2px 4px rgba(59, 188, 252, 0.550), inset 0 1px 0 rgba(255, 255, 255, 0.2)" }}>
-                            Get In Touch
-                            <MoveUpRight size={22} className='rotate-45' color="white" />
-                        </Link>
+                          ))}
+                        </div>
+                      </ul>
                     </div>
-                </div>
-            </div>
-        </>
-    );
+                  )}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div
+            className={`hidden lg:flex items-center gap-1 z-50 group ${scrolled ? "mt-0" : "mt-2"}`}
+          >
+            <Link
+              href="/contact"
+              aria-label="linkToContactUs"
+              className="group group/btn relative inline-flex items-center gap-4 bg-linear-to-br from-[#3bbbfc] to-[#01a8fc] pl-8 pr-1.5 py-1.5 rounded-full text-white text-sm font-semibold tracking-wide overflow-hidden transition-all duration-500 group-hover:shadow-[0_0_5px_rgba(59,187,252,0.6),0_0_5px_rgba(59,187,252,0.3)]"
+            >
+              <div className="absolute inset-0 bg-linear-to-br from-[#01a8fc] to-[#0d7ac2] opacity-0 transition-opacity duration-500 group-hover:opacity-100 rounded-full" />
+              <span className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/25 to-transparent transition-transform duration-1000 group-hover:translate-x-full" />
+              <span className="relative z-10 transition-all duration-500 ">
+                Get In Touch
+              </span>
+              <button
+                aria-label="rightToContactUs"
+                className="cursor-pointer relative w-9 h-9 rounded-full bg-white flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:shadow-[0_0_20px_rgba(59,187,252,0.6)] group-hover:-rotate-45"
+              >
+                <MoveRight
+                  size={18}
+                  className="text-[#0d7ac2] relative z-10 transition-transform duration-500 group-hover:scale-110"
+                  strokeWidth={2.5}
+                />
+              </button>
+            </Link>
+          </div>
+          <button
+            aria-label="Toggle navigation menu"
+            onClick={() => setOpen(!open)}
+            className={`${styles.navigationMenu} lg:hidden z-50 ${scrolled ? "mt-0" : "mt-5"}`}
+          >
+            {open ? (
+              <X size={25} className="text-white" />
+            ) : (
+              <Menu size={25} className="text-white" />
+            )}
+          </button>
+        </nav>
+      </header>
+
+      <div
+        className={`fixed inset-0 bg-black/60 z-40 lg:hidden backdrop-blur-sm transition-opacity duration-300 ${open ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+        onClick={() => setOpen(false)}
+      />
+
+      <div
+        className={`fixed top-0 left-0 h-full w-72 bg-black rounded-4xl z-50 transform transition-transform duration-500 ease-out ${open ? "translate-x-0" : "-translate-x-full"}`}
+      >
+        <div className="flex flex-col h-full">
+          <div className="p-6 border-b border-[#3bbbfc]/40">
+            <Link
+              href="/"
+              className={`text-2xl font-bold tracking-tight leading-tight text-white z-50 ${scrolled ? "mt-0" : "mt-5 md:mt-2"}`}
+            >
+              Byte
+              <span
+                className={`transition-colors duration-700 ease-in-out ${scrolled ? "text-[#5cc9ff]" : isHome ? "text-[#5cc9ff]" : "text-white"}`}
+              >
+                Cloude
+              </span>
+              <span className="text-white">.</span>
+            </Link>
+          </div>
+          <ul className="flex-1 overflow-y-auto pb-5">
+            {menu.map((item) => (
+              <li key={item.name} className="border-b border-[#3bbbfc]/40">
+                {!item.dropdown ? (
+                  <Link
+                    href={item.path}
+                    onClick={() => setOpen(false)}
+                    className="block px-6 py-4 text-white font-medium hover:text-blue-500"
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <div>
+                    <button
+                      onClick={() => setServicesOpen(!servicesOpen)}
+                      className="w-full flex items-center justify-between px-6 py-4 text-white font-medium"
+                    >
+                      {item.name}
+                      <ChevronDown
+                        size={20}
+                        className={`transform transition-transform ${servicesOpen ? "rotate-180" : ""}`}
+                      />
+                    </button>
+                    <div
+                      className={`overflow-hidden transition-all duration-300 ${servicesOpen ? "max-h-72" : "max-h-0"}`}
+                    >
+                      <ul className="bg-gray-900">
+                        {item.dropdown.map((sub) => (
+                          <li key={sub.name}>
+                            <Link
+                              href={sub.path}
+                              onClick={() => setOpen(false)}
+                              className="block px-10 py-3 text-sm text-gray-400 hover:text-blue-500"
+                            >
+                              {sub.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+          <div className="p-6 flex items-center gap-2 border-t border-[#3bbbfc]/40">
+            <Link
+              href="/contact"
+              className={`${styles.darkBtn} flex justify-between items-center w-[86%] mx-auto py-2.5 px-8 border border-white rounded-full text-[17px] font-medium tracking-wide text-white transition-all duration-300 ease-in-out`}
+              style={{
+                boxShadow:
+                  "0 2px 4px rgba(59, 188, 252, 0.550), inset 0 1px 0 rgba(255, 255, 255, 0.2)",
+              }}
+            >
+              Get In Touch
+              <MoveUpRight size={22} className="rotate-45" color="white" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }

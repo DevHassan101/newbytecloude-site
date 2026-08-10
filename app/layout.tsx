@@ -23,6 +23,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+          <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
       <body className={outfit.className} suppressHydrationWarning>
         <Navbar />
         {children}

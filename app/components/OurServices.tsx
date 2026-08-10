@@ -277,7 +277,7 @@ export default function OurServices() {
                                                 </span>
 
                                                 <div className="relative">
-                                                    <div className="w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-all duration-700 ease-out -rotate-35 group-hover/readmore:rotate-0 group-hover/readmore:translate-x-2 overflow-hidden"
+                                                    <div className="w-8 h-8 md:w-9 md:h-9 rounded-full flex items-center justify-center transition-all duration-700 ease-out  group-hover/readmore:-rotate-35 group-hover/readmore:translate-x-2 overflow-hidden"
                                                         style={{ background: 'linear-gradient(135deg, #3bbbfc 0%, #0188fc 100%)', boxShadow: '0 2px 8px rgba(59, 187, 252, 0.3)' }}>
                                                         <span className="absolute inset-0 rounded-full border-2 border-[#3bbbfc] opacity-0 scale-100 transition-all duration-700 group-hover/readmore:scale-150 group-hover/readmore:opacity-0"></span>
                                                         <ArrowRight size={15} className="text-white relative z-10 transition-all duration-500" strokeWidth={3} aria-hidden="true" />

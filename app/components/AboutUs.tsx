@@ -141,8 +141,8 @@ export default function AboutUs() {
                             </div>
                             <div className="about-btn mt-10 md:mt-14" data-aos="fade-right" data-aos-delay="500" data-aos-duration="700">
                                 <div className="flex justify-start items-center">
-                                    <button className="group/btn relative inline-flex items-center gap-4 bg-linear-to-br from-[#3bbbfc] to-[#01a8fc] pl-1.5 pr-8 md:pr-10 py-1.5 rounded-full transition-all duration-700 shadow-[0_10px_20px_rgba(1,168,252,0.3)] hover:shadow-[0_0_12px_rgba(1,168,252,0.3),0_0_12px_rgba(1,168,252,0.3)] cursor-pointer active:scale-95 overflow-hidden hover:scale-105">
-                                        <span className="absolute top-1/2 left-8 md:left-10 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white/20 rounded-full opacity-0 transition-all duration-700 ease-out group-hover/btn:w-125 group-hover/btn:h-125 group-hover/btn:opacity-100"></span>
+                                    <button className="group/btn relative inline-flex items-center gap-4 bg-linear-to-br from-[#3bbbfc] to-[#01a8fc] pl-1.5 pr-8 md:pr-10 py-1.5 rounded-full transition-all duration-700 shadow-[0_10px_20px_rgba(1,168,252,0.3)] hover:shadow-[0_0_12px_rgba(1,168,252,0.3),0_0_12px_rgba(1,168,252,0.3)] cursor-pointer active:scale-95 overflow-hidden">
+                                        <span className="absolute top-1/2 left-8 md:left-10 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white/20 rounded-full opacity-0 transition-all duration-700 ease-out group-hover/btn:opacity-100"></span>
                                         <div className="absolute inset-0 bg-linear-to-br from-[#01a8fc] to-[#0d7ac2] opacity-0 transition-opacity duration-700 group-hover/btn:opacity-100 rounded-full"></div>
                                         <span className="absolute bottom-0 left-0 h-full w-16 opacity-10">
                                             <svg xmlns="http://www.w3.org/2000/svg" className="w-full h-full object-stretch" viewBox="0 0 487 487">
@@ -154,13 +154,13 @@ export default function AboutUs() {
                                                 <path fillRule="nonzero" fill="#FFF" d="M487 486.7c-66.1-3.6-132.3-7.3-186.3-37s-95.9-85.3-126.2-137.2c-30.4-51.8-49.3-99.9-76.5-151.4C70.9 109.6 35.6 54.8.3 0H487v486.7z"></path>
                                             </svg>
                                         </span>
-                                        <div className="relative z-10 flex items-center transition-all duration-700 group-hover/btn:gap-4 gap-3">
-                                            <div className="bg-white w-10 h-10 md:w-12 md:h-12 rounded-full flex justify-center items-center transition-all duration-700 ease-out shadow-lg -rotate-40 group-hover/btn:rotate-0">
+                                        <div className="relative z-10 flex items-center transition-all duration-700 gap-3">
+                                            <div className="bg-white w-10 h-10 md:w-12 md:h-12 rounded-full flex justify-center items-center transition-all duration-700 ease-out shadow-lg group-hover/btn:-rotate-40">
                                                 <svg viewBox="0 0 24 24" className="w-5 h-5 md:w-5.5 md:h-5.5 fill-[#01a8fc] transition-all duration-700" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
                                                 </svg>
                                             </div>
-                                            <span className="text-white font-semibold tracking-wide text-sm md:text-[17px] whitespace-nowrap transition-all duration-700 drop-shadow-sm group-hover/btn:tracking-wider">
+                                            <span className="text-white font-semibold text-sm md:text-[17px] whitespace-nowrap transition-all duration-700 drop-shadow-sm ">
                                                 Explore Now
                                             </span>
                                         </div>
