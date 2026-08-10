@@ -119,15 +119,16 @@ export default function Navbar() {
         >
           <Link
             href="/"
-            className={`text-[22px] md:text-3xl flex justify-center items-center font-bold tracking-tight leading-tight text-white z-50 ${scrolled ? "mt-0" : "mt-5 md:mt-2"}`}
+            className={`flex justify-center items-center font-bold tracking-tight leading-tight text-white z-50 ${scrolled ? "mt-0" : "mt-5 md:mt-2"}`}
           >
-            Byte
+            <img src="images/logo.png" className="w-24" alt="" />
+            {/* Byte
             <span
               className={`transition-colors duration-700 ease-in-out ${scrolled ? "text-[#5cc9ff]" : isHome ? "text-[#5cc9ff]" : "text-white"}`}
             >
               Cloude
             </span>
-            <span className="text-white">.</span>
+            <span className="text-white">.</span> */}
           </Link>
           <div
             className={`hidden lg:flex items-center justify-center relative h-17 self-start transition-all duration-700 ease-in-out ${scrolled ? "bg-transparent" : ""}`}

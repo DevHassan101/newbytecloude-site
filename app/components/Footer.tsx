@@ -100,8 +100,8 @@ export default function Footer() {
                                                 {/* <div className="absolute w-[70%] h-[70%] rounded-full border border-white/10" /> */}
 
                                                 {/* Center Arrow with Enhanced Hover */}
-                                                <div className="relative z-10 transition-all duration-500 group-hover:scale-125 group-hover:rotate-45">
-                                                    <Icon icon="lineicons:arrow-angular-top-right" width="32" height="32" style={{ color: "#fff" }} />
+                                                <div className="relative z-10 transition-all duration-500 group-hover:scale-125 group-hover:-rotate-45">
+                                                    <Icon icon="lineicons:arrow-right" width="32" height="32" style={{ color: "#fff" }} />
                                                 </div>
 
                                                 {/* Shine Effect on Hover */}
@@ -121,9 +121,10 @@ export default function Footer() {
                         {/* Company Info */}
                         <div className="space-y-0 md:space-y-6">
                             <div className="flex items-start">
-                                <span className="text-[25px] md:text-3xl font-bold tracking-tight leading-tight text-white">
+                                <img src="images/logo.png" className="w-24" alt="" />
+                                {/* <span className="text-[25px] md:text-3xl font-bold tracking-tight leading-tight text-white">
                                     Byte<span className="text-[#5cc9ff]">Cloude</span><span className="text-white">.</span>
-                                </span>
+                                </span> */}
                             </div>
                             <p className="text-sm md:text-base text-white/80 leading-relaxed text-justify tracking-tight pt-5 md:pt-0">
                                 We create powerful AI solutions that drive results. Backed by innovation, built for performance, we are here to elevate your digital presence.
@@ -146,16 +147,17 @@ export default function Footer() {
                                 <Link
                                     href="#"
                                     className="w-9 h-9 md:w-11 md:h-11 bg-linear-to-br from-[#3bbbfc] to-[#0188fc] rounded-full flex items-center justify-center border border-[#18a2e8] hover:scale-110 transition-transform duration-300"
-                                    aria-label="Visit our Twitter page"
-                                >
-                                    <Icon icon="mdi:twitter" className="text-white text-md md:text-xl" aria-hidden="true" />
-                                </Link>
-                                <Link
-                                    href="#"
-                                    className="w-9 h-9 md:w-11 md:h-11 bg-linear-to-br from-[#3bbbfc] to-[#0188fc] rounded-full flex items-center justify-center border border-[#18a2e8] hover:scale-110 transition-transform duration-300"
                                     aria-label="Visit our LinkedIn page"
                                 >
                                     <Icon icon="ri:linkedin-fill" className="text-white text-md md:text-xl" aria-hidden="true" />
+                                </Link>
+                                <Link
+                                    href="https://www.fiverr.com/s/Q7lo5x1"
+                                    target="_blank"
+                                    className="w-9 h-9 md:w-11 md:h-11 bg-linear-to-br from-[#3bbbfc] to-[#0188fc] rounded-full flex items-center justify-center border border-[#18a2e8] hover:scale-110 transition-transform duration-300"
+                                    aria-label="Visit our Fiverr page"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" viewBox="-2.5 -2 24 24" preserveAspectRatio="xMinYMin" className="jam jam-fiverr text-white w-5 h-[20px]"><path d="M16.25 16.25v-10h-10v-.625c0-1.034.841-1.875 1.875-1.875H10V0H8.125A5.632 5.632 0 0 0 2.5 5.625v.625H0V10h2.5v6.25H0V20h8.75v-3.75h-2.5V10h6.285v6.25H10V20h8.75v-3.75h-2.5z"/><circle cx="14.375" cy="1.875" r="1.875"/></svg>
                                 </Link>
                             </div>
                         </div>
