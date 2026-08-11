@@ -36,7 +36,7 @@ export default function RootLayout({
         sizes="180x180"
         href="/favicon/apple-touch-icon.png"
       />
-      <link rel="manifest" href="/site.webmanifest" />
+      <link rel="manifest" href="/favicon/site.webmanifest" />
       <body className={outfit.className} suppressHydrationWarning>
         <Navbar />
         {children}

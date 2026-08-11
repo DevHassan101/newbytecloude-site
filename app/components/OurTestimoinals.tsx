@@ -2,7 +2,7 @@
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star, ArrowUpRight } from 'lucide-react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import { useRef } from 'react';
 // @ts-ignore
@@ -13,7 +13,10 @@ import 'swiper/css/navigation';
 interface Testimonial {
     id: number;
     name: string;
+    country: string;
+    flag: string;
     role: string;
+    projectUrl: string;
     quote: string;
     image: string;
     rating: number;
@@ -22,33 +25,45 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
     {
         id: 1,
-        name: "Michael G. Ware",
-        role: "Managing Director",
-        quote: "Outstanding service and attention to detail. The team exceeded all my expectations and delivered a project that truly stands out.",
-        image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop",
+        name: "Lexi Nugyen",
+        country: "United States",
+        flag: "/images/flags/us.svg",
+        role: "Matrix Inventory",
+        projectUrl: "https://www.matrixinventory.com/",
+        quote: "They turned our messy stock sheets into a clean inventory platform that our whole team actually enjoys using. Fast delivery and great attention to detail.",
+        image: "https://www.matrixinventory.com/logo.png",
         rating: 5
     },
     {
         id: 2,
-        name: "Cameron Williams",
-        role: "Web Designer",
-        quote: "I recently worked with onicx for my home renovation project, and I couldn't be happier with the results. From the moment I walked into their showroom",
+        name: "Muhammad Bilal",
+        country: "Saudi Arabia",
+        flag: "/images/flags/sa.svg",
+        role: "Revamp 180",
+        projectUrl: "https://revamp180.com/",
+        quote: "Our renovation brand finally has a website that matches the quality of our work. The design, speed and enquiry flow have all been a big upgrade for us.",
         image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
         rating: 5
     },
     {
         id: 3,
-        name: "Sarah Johnson",
-        role: "Product Manager",
-        quote: "Outstanding service and attention to detail. The team exceeded all my expectations and delivered a project that truly stands out.",
-        image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop",
+        name: "Royal Seat Luxury",
+        country: "United Arab Emirates",
+        flag: "/images/flags/ae.svg",
+        role: "Royal Seat Luxury",
+        projectUrl: "https://royalseatluxury.com/",
+        quote: "The site feels as premium as our fleet. Bookings are smoother, the experience looks stunning on mobile, and clients notice the difference right away.",
+        image: "https://royalseatluxury.com/assets/image/royel-seat-logo.png",
         rating: 5
     },
     {
         id: 4,
-        name: "David Chen",
-        role: "CEO & Founder",
-        quote: "Professional, creative, and efficient. Working with this team was a game-changer for our business. Highly recommended!",
+        name: "Asadullah",
+        country: "Pakistan",
+        flag: "/images/flags/pk.svg",
+        role: "Sigma Estimations",
+        projectUrl: "https://sigmaestimations.com/",
+        quote: "Professional, creative and efficient. Our estimation services are now presented clearly and we are getting far better quality leads than before.",
         image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
         rating: 5
     }
@@ -262,7 +277,7 @@ export default function OurTestimonials() {
                                                     duration: 0.8,
                                                     ease: [0.25, 0.46, 0.45, 0.94]
                                                 }}
-                                                className="h-75 md:h-80 group"
+                                                className="h-84 md:h-80 group"
                                             >
                                                 <motion.div 
                                                     whileHover={{ 
@@ -296,39 +311,65 @@ export default function OurTestimonials() {
                                                             />
                                                         </motion.div>
                                                         <div>
-                                                            <h4 className="text-white text-md md:text-xl font-bold tracking-wide drop-shadow-sm">{testimonial.name}</h4>
-                                                            <span className="bg-black/20 px-3 py-1 rounded-full text-[8.5px] md:text-[10px] text-white/90 uppercase tracking-widest font-bold ">
+                                                            <h4 className="flex items-center gap-2 text-white text-md md:text-xl font-bold tracking-wide drop-shadow-sm">
+                                                                {testimonial.name}
+                                                                <img
+                                                                    src={testimonial.flag}
+                                                                    alt={testimonial.country}
+                                                                    title={testimonial.country}
+                                                                    className="w-5 h-3.5 md:w-6 md:h-4 shrink-0 rounded-[3px] object-cover shadow-md ring-1 ring-white/50"
+                                                                />
+                                                            </h4>
+                                                            <span className="inline-block bg-black/20 px-3 py-1 rounded-full text-[8.5px] md:text-[10px] text-white/90 uppercase tracking-widest font-bold">
                                                                 {testimonial.role}
                                                             </span>
                                                         </div>
                                                     </div>
                                                     
                                                     <div className="relative z-10">
-                                                        <p className="text-white md:line-clamp-3 max-w-2xl md:max-w-md text-justify md:text-left tracking-tight md:tracking-normal text-sm md:text-lg leading-relaxed font-medium drop-shadow-sm">
+                                                        <p className="text-white line-clamp-4 md:line-clamp-3 max-w-2xl md:max-w-md text-justify md:text-left tracking-tight md:tracking-normal text-sm md:text-[17px] leading-relaxed font-medium drop-shadow-sm">
                                                             {testimonial.quote}
                                                         </p>
                                                     </div>
                                                     
-                                                    <motion.div 
-                                                        initial={{ scale: 0 }}
-                                                        animate={{ scale: 1 }}
-                                                        transition={{ delay: 1.5 + (index * 0.15), type: "spring" }}
-                                                        className="absolute bottom-7 left-8 flex bg-white/10 backdrop-blur-md p-1.75 md:p-2 rounded-lg md:rounded-xl border border-white/20"
+                                                    <motion.div
+                                                        initial={{ opacity: 0, y: 20 }}
+                                                        animate={{ opacity: 1, y: 0 }}
+                                                        transition={{ delay: 1.5 + (index * 0.15), duration: 0.5 }}
+                                                        className="absolute bottom-6 left-5 right-5 md:left-8 md:right-8 flex items-center justify-between gap-3 z-20"
                                                     >
-                                                        {[...Array(5)].map((_, i) => (
-                                                            <motion.div
-                                                                key={i}
-                                                                initial={{ opacity: 0, scale: 0 }}
-                                                                animate={{ opacity: 1, scale: 1 }}
-                                                                transition={{ 
-                                                                    delay: 1.7 + (index * 0.15) + (i * 0.1),
-                                                                    type: "spring",
-                                                                    stiffness: 200
-                                                                }}
-                                                            >
-                                                                <Star className="w-3.5 h-3.5 md:w-4 md:h-4 text-white fill-white ml-0.5 drop-shadow-[0_0_6px_rgba(255,255,255,0.8)]" />
-                                                            </motion.div>
-                                                        ))}
+                                                        <motion.a
+                                                            href={testimonial.projectUrl}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            aria-label={`Visit the live ${testimonial.role} website`}
+                                                            whileHover={{ scale: 1.06 }}
+                                                            whileTap={{ scale: 0.96 }}
+                                                            className="group/cta relative flex items-center gap-2 bg-white hover:bg-white text-[#0179d8] pl-4 pr-3 py-2 md:py-2.5 rounded-full text-[11px] md:text-xs font-extrabold uppercase tracking-wider shadow-[0_8px_20px_rgba(0,0,0,0.25)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.35)] transition-shadow duration-300 cursor-pointer overflow-hidden whitespace-nowrap"
+                                                        >
+                                                            <span className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-linear-to-r from-transparent via-[#3bbbfc]/25 to-transparent opacity-0 group-hover/cta:opacity-100 group-hover/cta:animate-[shine_1.5s_ease-in-out_infinite]" />
+                                                            <span className="relative z-10">Visit Live Site</span>
+                                                            <span className="relative z-10 flex items-center justify-center w-5 h-5 md:w-5.5 md:h-5.5 rounded-full bg-[#0188fc] text-white shadow-sm">
+                                                                <ArrowUpRight className="w-3 h-3 md:w-3.5 md:h-3.5 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 transition-transform duration-300" />
+                                                            </span>
+                                                        </motion.a>
+
+                                                        <div className="flex shrink-0 bg-white/10 backdrop-blur-md p-1.5 md:p-2 rounded-lg md:rounded-xl border border-white/20">
+                                                            {[...Array(testimonial.rating)].map((_, i) => (
+                                                                <motion.div
+                                                                    key={i}
+                                                                    initial={{ opacity: 0, scale: 0 }}
+                                                                    animate={{ opacity: 1, scale: 1 }}
+                                                                    transition={{
+                                                                        delay: 1.7 + (index * 0.15) + (i * 0.1),
+                                                                        type: "spring",
+                                                                        stiffness: 200
+                                                                    }}
+                                                                >
+                                                                    <Star className="w-3 h-3 md:w-3.5 md:h-3.5 text-white fill-white ml-0.5 drop-shadow-[0_0_6px_rgba(255,255,255,0.8)]" />
+                                                                </motion.div>
+                                                            ))}
+                                                        </div>
                                                     </motion.div>
                                                     
                                                     <div className="absolute bottom-0 left-0 right-0 w-full h-1 bg-linear-to-r from-transparent via-white/30 to-transparent rounded-4xl rounded-b-[80px]" />
