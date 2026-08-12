@@ -31,7 +31,7 @@ const testimonials: Testimonial[] = [
         role: "Matrix Inventory",
         projectUrl: "https://www.matrixinventory.com/",
         quote: "They turned our messy stock sheets into a clean inventory platform that our whole team actually enjoys using. Fast delivery and great attention to detail.",
-        image: "https://www.matrixinventory.com/logo.png",
+        image: "/images/testimonials/matrix-inventory.png",
         rating: 5
     },
     {
@@ -42,7 +42,7 @@ const testimonials: Testimonial[] = [
         role: "Revamp 180",
         projectUrl: "https://revamp180.com/",
         quote: "Our renovation brand finally has a website that matches the quality of our work. The design, speed and enquiry flow have all been a big upgrade for us.",
-        image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop",
+        image: "/images/testimonials/revamp.jpeg",
         rating: 5
     },
     {
@@ -53,7 +53,7 @@ const testimonials: Testimonial[] = [
         role: "Royal Seat Luxury",
         projectUrl: "https://royalseatluxury.com/",
         quote: "The site feels as premium as our fleet. Bookings are smoother, the experience looks stunning on mobile, and clients notice the difference right away.",
-        image: "https://royalseatluxury.com/assets/image/royel-seat-logo.png",
+        image: "/images/testimonials/royal-seat-logo.png",
         rating: 5
     },
     {
@@ -64,7 +64,7 @@ const testimonials: Testimonial[] = [
         role: "Sigma Estimations",
         projectUrl: "https://sigmaestimations.com/",
         quote: "Professional, creative and efficient. Our estimation services are now presented clearly and we are getting far better quality leads than before.",
-        image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop",
+        image: "/images/testimonials/sigma-estimations.png",
         rating: 5
     }
 ];
@@ -302,7 +302,7 @@ export default function OurTestimonials() {
                                                             whileHover={{ scale: 1.1 }}
                                                             className="relative p-px md:p-1 rounded-full border border-white/55 group-hover:border-white transition-colors"
                                                         >
-                                                            <img src="/images/about/aboutceo.webp" alt="CEO"
+                                                            <img src={testimonial.image} alt="CEO"
                                                                 className="w-14 h-14 md:w-16 md:h-16 rounded-full object-fit shadow-2xl border-2 border-white/30" />
                                                             <motion.div 
                                                                 animate={{ scale: [1, 1.2, 1] }}
